@@ -126,7 +126,7 @@ img {
   min-height: 100vh;
 }
 /* Slider */
-#fullslider{
+.fix{
   position: fixed;
 }
 #slider{
