@@ -146,24 +146,24 @@ img {
   position: absolute;
   margin-top: 2vw;
   margin-left: 2vw;
-  width: 5vw;
-  height: 5vw;
+  width: 95px;
+  height: 95px;
 }
 #lineicon1{
-  width: 5vw;
-  height: 1vw;
+  width: 95px;
+  height: 19px;
   transition: 0.5s;
 }
 #lineicon2{
   margin-top: 2px;
-  width: 5vw;
-  height: 1vw;
+  width: 95px;
+  height: 19px;
   transition: 0.5s;
 }
 #lineicon3{
   margin-top: 2px;
-  width: 5vw;
-  height: 1vw;
+  width: 95px;
+  height: 19px;
   transition: 0.5s;
 }
 /* Animations */
