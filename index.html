@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/filepond/dist/filepond.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css">
+    <title>TacticalPigeon</title>
+    <!-- include FilePond library -->
+    <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
+    <!-- include FilePond plugins -->
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="img/pigeon.png" id="Vanpigeon"></img>
+            <h1>Pigeonator</h1>
+        </div>
+        <div class="menu">
+            <span><a href="#"><img src="img/Pigeonimg.png"></a></span>
+            <span><a href="#"><img src="img/Pigeonfilm.png"></a></span>
+            <span><a href="#"><img src="img/Pigeongif.png"></a></span>
+            <span><a href="#"><img src="img/Pigeonconverter.png"></a></span>
+        </div>
+        <div class="options">
+            <span><img src="img/Newproject.png"><p>New Project</p></span>
+            <span><img src="img/Pcupload.png"><p>Upload from computer</p></span>
+        </div>
+        <div class="content">
+            <input type="file" 
+            class="filepond"
+            name="filepond"
+            multiple
+            acceptedFileTypes = "image/jpeg, image/png, image/svg+xml, image/webp, image/avif, image/x-icon, image/bmp, image/tiff" />
+        </div>
+        <div class="blank"><div id="lineicon" onclick="changemenu()"><img src="img/line.png" id="lineicon1"><img src="img/line.png" id="lineicon2"><img src="img/line.png" id="lineicon3"><div id="slider"></div></div></div>
+        <div class="footer"></div>
+    </div>
+    <script src="scripts/upload.js"></script>
+    <script src="scripts/menu.js"></script>
+</body>
+</html>
