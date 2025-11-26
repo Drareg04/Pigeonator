@@ -13,7 +13,6 @@ img {
   -moz-user-select: none;
   -o-user-select: none;
   user-select: none;
-  user-drag: none;
 	-webkit-user-drag: none;
 	-moz-user-select: none;
 }
@@ -24,10 +23,10 @@ img {
 .container {
   display: grid;
   grid-template-areas:
-    "menu header blank"
-    "menu options blank"
     "menu content blank"
-    "footer footer blank";
+    "menu content blank"
+    "menu content blank"
+    "footer content blank";
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-rows: 30vh auto auto auto;
   gap: 3px;
@@ -46,11 +45,16 @@ img {
     margin-right: 1vw;
     margin-bottom: 0;
 }
-
-.container div.header img {
+.indicator{
+  position: absolute;
+  width: 5vw;
+  height: 5vw;
+  transform: translate(20vw, 1vw) rotate(-25deg);
+}
+.container div.header #Vanpigeon {
     width: 10vw;
     height: 10vw;
-    margin: 2vw;
+    margin: 1vw;
     margin-bottom: 0;
     border-radius: 25%;
 }
@@ -86,14 +90,15 @@ img {
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
-.container div.options {
-    grid-area: options;
+.container div.upper {
+    grid-area: upper;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 30%;
 }
-.container div.options span{
+.container div.upper span{
     margin: 1vw;
     border: 1px solid #949494;
     border-radius: 15px;
@@ -103,19 +108,29 @@ img {
     align-items: center;
     transition: background-color 0.5s linear;
 }
-.container div.options span:hover{
+.container div.upper span img{
+    width: 3vw !important;
+}
+.container div.upper span:hover{
     background-color: #313131;
 }
-.container div.options p{
+.container div.upper p{
     margin: 1vw;
 }
-.container div.options img{
-    margin-left: 1vw;
-    width: 2vw;
+.container div.upper img{
+    width: 5vw;
+}
+.container div.lower {
+  grid-area: lower;
+  display: grid;
+  margin-bottom: 5%;
+  width: 85%;
 }
 .container div.content {
   grid-area: content;
-  padding: 0 2vw 0 2vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .container div.footer {
   grid-area: footer;
@@ -139,46 +154,50 @@ img {
 }
 #slider img{
   height: 100vh;
+  width: 10%;
   margin-left: -1vw;
 }
 /* Slider icon */
 #lineicon{
   position: absolute;
-  margin-top: 2vw;
-  margin-left: 2vw;
-  width: 95px;
-  height: 95px;
+  margin-top:2vw;
+  margin-left: 4vw;
+  width: 5vw;
+  height: 5vw;
 }
 #lineicon1{
-  width: 95px;
-  height: 19px;
-  transition: 0.5s;
+  position: absolute;
+  width: 100%;
+  height: 20%;
+  transition: 0.5s;  
 }
 #lineicon2{
-  margin-top: 2px;
-  width: 95px;
-  height: 19px;
+  position: absolute;
+  margin-top: 25%;
+  width: 100%;
+  height: 20%;
   transition: 0.5s;
 }
 #lineicon3{
-  margin-top: 2px;
-  width: 95px;
-  height: 19px;
-  transition: 0.5s;
+  position: absolute;
+  margin-top: 50%;
+  width: 100%;
+  height: 20%;
+  transition: 0.5s;  
 }
 /* Animations */
 .animated #slider{
-  transform: translate(-25vw);
+  transform: translate(-100%);
 }
 .animated #lineicon1{
-  transform: translate(0, 25px) rotate(45deg);
+  transform: translate(0, 125%) rotate(45deg);
 }
 .animated #lineicon2{
-  width: 2px;
-  transform: translate(50px);
+  width: 0%;
+  margin-left: 50%;
 }
 .animated #lineicon3{
-  transform: translate(0, -25px) rotate(-45deg);
+  transform: translate(0, -125%) rotate(-45deg);
 }
 /* Upload */
 .filepond--drop-label {
