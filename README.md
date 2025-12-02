@@ -26,9 +26,9 @@ If you’ve ever wished you could do everything in one place without juggling a 
 
 ---
 
-## 🚀 Try It Out
+## <img src="https://birdsofcolombia.com/cdn/shop/files/pale-vented-pigeon-head.gif?v=1710522307&width=200" width="28" style="position: relative; top: 4px;"> Try It Out
 
-Pigeonator is already live but still on development — no sign-up, no installation needed.
+Pigeonator is already live but still in development — no sign-up, no installation needed.
 
 👉 **[Open Pigeonator](https://pigeonator.tacticalpigeon.com)** 🕊️💨
 
