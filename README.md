@@ -3,11 +3,14 @@
 
 ---
 
-## 🐦✨ What Is Pigeonator?
+## What Is Pigeonator?
 
-Pigeonator is your feathered friend in the world of multimedia editing. Whether you’re touching up a photo, trimming a video, crafting the perfect meme, or converting files on the fly, Pigeonator handles it right in your browser — no downloads, no plug-ins, no bulky apps.
+<img src="https://cdn-icons-png.flaticon.com/512/8758/8758523.png" alt="Pigeon Icon" width="180" align="right" style="float: right; margin: 0 0 10px 20px;">
 
-If you’ve ever wished you could do everything in one place without juggling a flock of different tools, welcome to the nest. Perfect for creators, students, designers, and anyone who just needs clean, quick edits from any device.
+Pigeonator is your feathered friend in the world of multimedia editing. Whether you’re touching up a photo, trimming a video, crafting the perfect meme, or converting files on the fly, Pigeonator handles it right in your browser — no downloads, plug-ins, or bulky apps required.
+
+If you’ve ever wished you could do everything in one place without juggling a flock of different tools, you’re in the right nest. Perfect for creators, students, designers, and everyday humans who just need quick, clean edits from any device.
+
 
 ---
 
@@ -19,7 +22,7 @@ If you’ve ever wished you could do everything in one place without juggling a 
 | 🎬 **Video Editing** | Trim, merge, add audio, transitions, and effects. CapCut vibes, zero installation. |
 | 🎞️ **GIF & APNG Creation** | Turn videos into GIFs/APNGs, edit frames, resize, and optimize for memes or reactions. |
 | 🔄 **File Conversion** | Convert images, audio, videos, and documents to tons of formats. No more “unsupported file type” squawks. |
-| 🗂️ **Smart File Management** | Upload, organize into folders, and download in your preferred format — smooth and simple. |
+| 🗂️ **Smart File Management (Maybe)** | Upload, organize into folders, and download in your preferred format — smooth and simple. |
 
 ---
 
