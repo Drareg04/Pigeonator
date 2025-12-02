@@ -44,4 +44,5 @@ authentication:
 
 design:
   - clean-ui: true
-  - mobile-friendly: true
+  - mobile-friendly: false
+  - will-be-mobile-friendly: true
