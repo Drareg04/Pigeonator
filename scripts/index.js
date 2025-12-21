@@ -24,9 +24,36 @@ function changeContent(page) {
                                 <img src="img/x.png" onclick="hideDiv()">
                             </div>
                         </div>
-                        <div class="dragupload"><button id="uppyModalOpener">Open Modal</button></div>
-                        <div class="dragdefaults"><p>Something</p></div>
-                        <div class="dragperso"><p>Something else</p></div>
+                        <div id="dragdivdown">
+                            <div class="dragupload"><input type="file" id="Upload" name="filename" accept="image/jpeg, image/png, image/svg+xml, image/webp, image/avif, image/x-icon, image/bmp, image/tiff"></div>
+                            <div class="dragdefaults">
+                                <div onclick="changeSelected()"><img src="img/presets/1640x664.png"></div>
+                                <div onclick="changeSelected()"><img src="img/presets/1640x856.png"></div>
+                                <div onclick="changeSelected()"><img src="img/presets/1920x1080.png"></div>
+                                <div onclick="changeSelected()"><img src="img/presets/1080x1080.png"></div>
+                                <div onclick="changeSelected()"><img src="img/presets/1080x1920.png"></div>
+                                <div onclick="changeSelected()"><img src="img/presets/1080x1350.png"></div>
+                                <div onclick="changeSelected()"><img src="img/presets/2560x1440.png"></div>
+                                <div onclick="changeSelected()"><img src="img/presets/1500x500.png"></div>
+                            </div>
+                            <div class="dragperso">
+                                <h1>Name</h1>
+                                <input type="text" id="fname" name="name">
+                                <div style="display: flex;">
+                                    <div><h1>Width</h1><input type="text" id="width" name="width"></div>
+                                    <button>&lt;-&gt;</button>
+                                    <div><h1>Height</h1><input type="text" id="height" name="height"></div>
+                                </div>
+                                <h1>Background</h1>
+                                <select name="background" id="bgcolor">
+                                    <option value="none">Transparent</option>
+                                    <option value="white">White</option>
+                                    <option value="black">Black</option>
+                                    <option value="custom">Custom</option>
+                                </select>
+                                <button>Create</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="lower">

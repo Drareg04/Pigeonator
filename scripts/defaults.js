@@ -1,4 +1,5 @@
 function changeSelected() {
-    $(".selected").removeClass("selected"); 
+    selected(document.getElementById("selected"));
+    .removeClass("selected"); 
     $(this).addClass("selected");
 }
