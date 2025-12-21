@@ -3,27 +3,20 @@
 
 <head>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://unpkg.com/filepond/dist/filepond.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css">
+    <link rel="stylesheet" href="/deps/filepond/filepond.min.css">
+    <link rel="stylesheet" href="/deps/filepond/filepond-plugin-image-preview.min.css">
     <title>Pigeonator</title>
     <link rel="icon" type="image/x-icon" href="img/pigeon.png">
-    <!-- include FilePond library -->
-    <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
-    <!-- include FilePond plugins -->
-    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js"></script>
-    <script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
-    <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
-    <script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js"></script>
 </head>
 
 <body>
     <div class="container">
         <div class="menu">
             <div class="fix">
-                <span><img src="img/Pigeonimg.png" onclick= "changeContent('img')"></span>
-                <span><img src="img/Pigeonfilm.png" onclick= "changeContent('vid')"></span>
-                <span><img src="img/Pigeongif.png" onclick= "changeContent('gif')"></span>
-                <span><img src="img/Pigeonconverter.png" onclick= "changeContent('cnv')"></span>
+                <span><img src="img/Pigeonimg.png" onclick="changeContent('img')"></span>
+                <span><img src="img/Pigeonfilm.png" onclick="changeContent('vid')"></span>
+                <span><img src="img/Pigeongif.png" onclick="changeContent('gif')"></span>
+                <span><img src="img/Pigeonconverter.png" onclick="changeContent('cnv')"></span>
             </div>
         </div>
         <div class="content" id="content">
@@ -33,21 +26,57 @@
                 <img src="img/img.png" class="indicator">
             </div>
             <div class="upper">
-                <span><img src="img/Newproject.png"><p>New Project</p></span>
-                <span><img src="img/Pcupload.png"><p>Upload from computer</p></span>
+                <span><img src="img/Newproject.png" onclick="showDiv()">
+                    <p>New Project</p>
+                </span>
+                <span><img src="img/Pcupload.png">
+                    <p>Upload from computer</p>
+                </span>
+                <div id="dragdiv" style="display: none;">
+                    <div id="dragdivheader">
+                        <div class="title">
+                            <h1>New Project</h1>
+                        </div>
+                        <div class="img">
+                            <img src="img/x.png" onclick="hideDiv()">
+                        </div>
+                    </div>
+                    <div id="dragdivdown">
+                        <div class="dragupload"><input type="file" id="Upload" name="filename" accept="image/jpeg, image/png, image/svg+xml, image/webp, image/avif, image/x-icon, image/bmp, image/tiff"></div>
+                        <div class="dragdefaults">
+                            <div><img src="img/presets/1640x664.png"></div>
+                            <div><img src="img/presets/1640x856.png"></div>
+                            <div><img src="img/presets/1920x1080.png"></div>
+                            <div><img src="img/presets/1080x1080.png"></div>
+                            <div><img src="img/presets/1080x1920.png"></div>
+                            <div><img src="img/presets/1080x1350.png"></div>
+                            <div><img src="img/presets/2560x1440.png"></div>
+                            <div><img src="img/presets/1500x500.png"></div>
+                        </div>
+                        <div class="dragperso">
+                            <h1>Name</h1>
+                            <input type="text" id="fname" name="name">
+                            <h1>Width</h1><h1>Height</h1>
+                            <input type="text" id="width" name="width"><input type="text" id="height" name="height">
+                            <h1>Background</h1>
+                            <select name="background" id="bgcolor">
+                                <option value="none">Transparent</option>
+                                <option value="white">White</option>
+                                <option value="black">Black</option>
+                                <option value="custom">Custom</option>
+                            </select>
+                            <button>Create</button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="lower">
-                <input type="file" 
-                class="filepond"
-                name="filepond"
-                multiple
-                acceptedFileTypes = "image/jpeg, image/png, image/svg+xml, image/webp, image/avif, image/x-icon, image/bmp, image/tiff" />
+                <input type="file" id="Upload" name="filename" accept="image/jpeg, image/png, image/svg+xml, image/webp, image/avif, image/x-icon, image/bmp, image/tiff">
             </div>
-            <script src="scripts/upload.js"></script>
         </div>
         <div class="blank">
             <div id="fullslider" class="fix">
-                <div id="slider"><img src="img/verticaline.png"></div>
+                <div id="slider"></div>
                 <div id="lineicon" onclick="changemenu()">
                     <img src="img/line.png" id="lineicon1">
                     <img src="img/line.png" id="lineicon2">
@@ -59,5 +88,7 @@
     </div>
     <script src="scripts/menu.js"></script>
     <script src="scripts/index.js"></script>
+    <script src="scripts/drag.js"></script>
 </body>
+
 </html>
