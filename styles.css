@@ -98,7 +98,6 @@ img {
 }
 .container div.upper {
     grid-area: upper;
-    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -213,7 +212,6 @@ img {
   width: 80vw;
   height: 80vh;
   background-color: #252525;
-  text-align: center;
   border: 1lh solid transparent;
   border-image: url(img/Border.png) 30 round;
   border-image-outset: -1;
@@ -261,6 +259,14 @@ img {
   grid-template-columns: repeat(2, 50%);
   grid-template-rows: repeat(4, 25%);
   background-color: #272727;
+  justify-content: center;
+  align-content: center;
+}
+.dragdefaults section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
 }
 .dragdefaults #selected{
   background-color: #3f3f3f;
@@ -292,4 +298,5 @@ img {
   border-image: url(img/Border.png) 30 round;
   color: black;
   font-family: Pencil;
+  margin-top: auto;
 }
