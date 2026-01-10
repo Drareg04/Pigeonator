@@ -44,7 +44,7 @@
                     <div id="dragdivdown">
                         <div class="dragupload"><input type="file" id="Upload" name="filename" accept="image/jpeg, image/png, image/svg+xml, image/webp, image/avif, image/x-icon, image/bmp, image/tiff"></div>
                         <div class="dragdefaults">
-                            <section onclick="changeSelected()"><img src="img/presets/1640x664.png"></section>
+                            <section onclick="changeSelected()" class="selected"><img src="img/presets/1640x664.png"></section>
                             <section onclick="changeSelected()"><img src="img/presets/1640x856.png"></section>
                             <section onclick="changeSelected()"><img src="img/presets/1920x1080.png"></section>
                             <section onclick="changeSelected()"><img src="img/presets/1080x1080.png"></section>
@@ -56,16 +56,13 @@
                         <div class="dragperso">
                             <h1>Name</h1>
                             <input type="text" id="fname" name="name">
-                            <div style="display: flex;">
-                                <div>
-                                    <h1>Width</h1><input type="text" id="width" name="width">
-                                </div>
-                                <div>
-                                    <button>&lt;-&gt;</button>
-                                </div>
-                                <div>
-                                    <h1>Height</h1><input type="text" id="height" name="height">
-                                </div>
+                            <div id="size">
+                                <h1 style="grid-area: width;">Width</h1>
+                                <input type="text" id="width" name="width" style="grid-area: twidth;">
+                                <div  style="grid-area: blank;"></div>
+                                <button  style="grid-area: button;">&lt;-&gt;</button>
+                                <h1 style="grid-area: heigth;">Height</h1>
+                                <input type="text" id="height" name="height" style="grid-area: theigth;">
                             </div>
                             <h1>Background</h1>
                             <select name="background" id="bgcolor">
@@ -74,6 +71,7 @@
                                 <option value="black">Black</option>
                                 <option value="custom">Custom</option>
                             </select>
+                            <br><br>
                             <button>Create</button>
                         </div>
                     </div>

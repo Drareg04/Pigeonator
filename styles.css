@@ -268,7 +268,7 @@ img {
   align-items: center;
   font-size: 3em;
 }
-.dragdefaults #selected{
+.selected{
   background-color: #3f3f3f;
   border: 1px solid #9ec2d8;
 }
@@ -299,4 +299,10 @@ img {
   color: black;
   font-family: Pencil;
   margin-top: auto;
+}
+.dragperso #size{
+  display: grid;
+  grid-template-areas:
+    "width width blank heigth heigth"
+    "twidth twidth button theigth theigth";
 }

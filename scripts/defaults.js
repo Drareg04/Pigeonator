@@ -1,5 +1,5 @@
 function changeSelected() {
-    selected(document.getElementById("selected"));
-    removeClass("selected"); 
-    $(this).addClass("selected");
+    var element = event.target.closest('div');
+    document.getElementsByClassName("selected").element.classList.remove("selected");
+
 }
