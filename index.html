@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="/deps/filepond/filepond-plugin-image-preview.min.css">
     <title>Pigeonator</title>
     <link rel="icon" type="image/x-icon" href="img/pigeon.png">
+
+    <script src="/scripts/jquery-3.7.1.min.js"></script>
 </head>
 
 <body>
@@ -20,11 +22,15 @@
             </div>
         </div>
         <div class="content" id="content">
+
+            <!-- a header -->
             <div class="header">
                 <img src="img/logoboina.png" id="Vanpigeon"></img>
                 <h1>Pigeonator</h1>
                 <img src="img/img.png" class="indicator">
             </div>
+
+            <!-- upper -->
             <div class="upper">
                 <span><img src="img/Newproject.png" onclick="showDiv()">
                     <p>New Project</p>
@@ -32,56 +38,23 @@
                 <span><img src="img/Pcupload.png">
                     <p>Upload from computer</p>
                 </span>
+
+                <!-- new project -->
                 <div id="dragdiv" style="display: none;">
-                    <div id="dragdivheader">
-                        <div class="title">
-                            <h1>New Project</h1>
-                        </div>
-                        <div class="img">
-                            <img src="img/x.png" onclick="hideDiv()">
-                        </div>
-                    </div>
-                    <div id="dragdivdown">
-                        <div class="dragupload"><input type="file" id="Upload" name="filename" accept="image/jpeg, image/png, image/svg+xml, image/webp, image/avif, image/x-icon, image/bmp, image/tiff"></div>
-                        <div class="dragdefaults">
-                            <section onclick="changeSelected()" class="selected"><img src="img/presets/1640x664.png"></section>
-                            <section onclick="changeSelected()"><img src="img/presets/1640x856.png"></section>
-                            <section onclick="changeSelected()"><img src="img/presets/1920x1080.png"></section>
-                            <section onclick="changeSelected()"><img src="img/presets/1080x1080.png"></section>
-                            <section onclick="changeSelected()"><img src="img/presets/1080x1920.png"></section>
-                            <section onclick="changeSelected()"><img src="img/presets/1080x1350.png"></section>
-                            <section onclick="changeSelected()"><img src="img/presets/2560x1440.png"></section>
-                            <section onclick="changeSelected()"><img src="img/presets/1500x500.png"></section>
-                        </div>
-                        <div class="dragperso">
-                            <h1>Name</h1>
-                            <input type="text" id="fname" name="name">
-                            <div id="size">
-                                <h1 style="grid-area: width;">Width</h1>
-                                <input type="text" id="width" name="width" style="grid-area: twidth;">
-                                <div  style="grid-area: blank;"></div>
-                                <button  style="grid-area: button;">&lt;-&gt;</button>
-                                <h1 style="grid-area: heigth;">Height</h1>
-                                <input type="text" id="height" name="height" style="grid-area: theigth;">
-                            </div>
-                            <h1>Background</h1>
-                            <select name="background" id="bgcolor">
-                                <option value="none">Transparent</option>
-                                <option value="white">White</option>
-                                <option value="black">Black</option>
-                                <option value="custom">Custom</option>
-                            </select>
-                            <br><br>
-                            <button>Create</button>
-                        </div>
-                    </div>
+
                 </div>
+
+
             </div>
+
+            <!-- lower -->
             <div class="lower">
                 <input type="file" id="Upload" name="filename"
                     accept="image/jpeg, image/png, image/svg+xml, image/webp, image/avif, image/x-icon, image/bmp, image/tiff">
             </div>
+
         </div>
+
         <div class="blank">
             <div id="fullslider" class="fix">
                 <div id="slider"></div>
@@ -92,12 +65,16 @@
                 </div>
             </div>
         </div>
+
         <div class="footer"></div>
+
     </div>
-    <script src="scripts/defaults.js"></script>
+    <!-- <script src="scripts/defaults.js"></script> -->
+    <!-- <script src="scripts/index.js"></script> -->
     <script src="scripts/menu.js"></script>
-    <script src="scripts/index.js"></script>
     <script src="scripts/drag.js"></script>
+
+
 </body>
 
 </html>
