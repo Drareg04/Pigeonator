@@ -59,7 +59,7 @@
             <div class="blank">
                 <div id="fullslider" class="fix">
                     <div id="slider"></div>
-                    <div id="lineicon" onclick="changemenu()">
+                    <div id="lineicon">
                         <img src="img/line.png" id="lineicon1">
                         <img src="img/line.png" id="lineicon2">
                         <img src="img/line.png" id="lineicon3">
@@ -75,6 +75,11 @@
     <!-- <script src="scripts/index.js"></script> -->
     <script src="scripts/menu.js"></script>
     <script src="scripts/drag.js"></script>
+    <script>
+        $('#lineicon').on('click', function() {
+            $("#fullslider").toggleClass("animated");
+        });
+    </script>
 
 
 </body>
