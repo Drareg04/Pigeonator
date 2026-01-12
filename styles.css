@@ -274,6 +274,7 @@ img {
 .selected{
   background-color: #3b3b3b !important;
   border: 1px solid #9ec2d8 !important;
+  z-index: 2 !important;
 }
 .dragdefaults div{
   justify-content: center;
@@ -282,7 +283,7 @@ img {
 .dragperso{
   width: 26.6vw;
 }
-.dragperso h1{
+h1{
   color: #9ec2d8;
   font-family: Drawin;
   font-size: 1vw;
@@ -308,4 +309,11 @@ img {
   grid-template-areas:
     "width width blank heigth heigth"
     "twidth twidth button theigth theigth";
+}
+button{
+  z-index: 1;
+}
+button:hover{
+  scale: 1.05;
+  z-index: 0;
 }

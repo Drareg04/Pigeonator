@@ -12,62 +12,64 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="menu">
-            <div class="fix">
-                <span><img src="img/Pigeonimg.png" onclick="changeContent('img')"></span>
-                <span><img src="img/Pigeonfilm.png" onclick="changeContent('vid')"></span>
-                <span><img src="img/Pigeongif.png" onclick="changeContent('gif')"></span>
-                <span><img src="img/Pigeonconverter.png" onclick="changeContent('cnv')"></span>
+    <div class="content">
+        <div class="container">
+            <div class="menu">
+                <div class="fix">
+                    <span><img src="img/Pigeonimg.png" onclick="changeContent('img')"></span>
+                    <span><img src="img/Pigeonfilm.png" onclick="changeContent('vid')"></span>
+                    <span><img src="img/Pigeongif.png" onclick="changeContent('gif')"></span>
+                    <span><img src="img/Pigeonconverter.png" onclick="changeContent('cnv')"></span>
+                </div>
             </div>
-        </div>
-        <div class="content" id="content">
+            <div class="content" id="content">
 
-            <!-- a header -->
-            <div class="header">
-                <img src="img/logoboina.png" id="Vanpigeon"></img>
-                <h1>Pigeonator</h1>
-                <img src="img/img.png" class="indicator">
-            </div>
+                <!-- a header -->
+                <div class="header">
+                    <img src="img/logoboina.png" id="Vanpigeon"></img>
+                    <h1>Pigeonator</h1>
+                    <img src="img/img.png" class="indicator">
+                </div>
 
-            <!-- upper -->
-            <div class="upper">
-                <span><img src="img/Newproject.png" onclick="showDiv()">
-                    <p>New Project</p>
-                </span>
-                <span><img src="img/Pcupload.png">
-                    <p>Upload from computer</p>
-                </span>
+                <!-- upper -->
+                <div class="upper">
+                    <span><img src="img/Newproject.png" onclick="showDiv()">
+                        <p>New Project</p>
+                    </span>
+                    <span><img src="img/Pcupload.png">
+                        <p>Upload from computer</p>
+                    </span>
 
-                <!-- new project -->
-                <div id="dragdiv" style="display: none;">
+                    <!-- new project -->
+                    <div id="dragdiv" style="display: none;">
+
+                    </div>
+
 
                 </div>
 
+                <!-- lower -->
+                <div class="lower">
+                    <input type="file" id="Upload" name="filename"
+                        accept="image/jpeg, image/png, image/svg+xml, image/webp, image/avif, image/x-icon, image/bmp, image/tiff">
+                </div>
 
             </div>
 
-            <!-- lower -->
-            <div class="lower">
-                <input type="file" id="Upload" name="filename"
-                    accept="image/jpeg, image/png, image/svg+xml, image/webp, image/avif, image/x-icon, image/bmp, image/tiff">
-            </div>
-
-        </div>
-
-        <div class="blank">
-            <div id="fullslider" class="fix">
-                <div id="slider"></div>
-                <div id="lineicon" onclick="changemenu()">
-                    <img src="img/line.png" id="lineicon1">
-                    <img src="img/line.png" id="lineicon2">
-                    <img src="img/line.png" id="lineicon3">
+            <div class="blank">
+                <div id="fullslider" class="fix">
+                    <div id="slider"></div>
+                    <div id="lineicon" onclick="changemenu()">
+                        <img src="img/line.png" id="lineicon1">
+                        <img src="img/line.png" id="lineicon2">
+                        <img src="img/line.png" id="lineicon3">
+                    </div>
                 </div>
             </div>
+
+            <div class="footer"></div>
+
         </div>
-
-        <div class="footer"></div>
-
     </div>
     <!-- <script src="scripts/defaults.js"></script> -->
     <!-- <script src="scripts/index.js"></script> -->

@@ -39,13 +39,13 @@
             <option value="custom">Custom</option>
         </select>
         <br><br>
-        <button>Create</button>
+        <button id="imgcreate">Create</button>
     </div>
 </div>
 
 <script>
     $(document).on("click", ".preset", function () {
-        $(".preset").removeClass("selected"); clickedBtnID = this.id
+        $(".preset").removeClass("selected");
         $(this).addClass("selected");
 
         // do presety stuff
@@ -53,5 +53,8 @@
         console.log(resolution)
         $("#width").val(resolution[0]);
         $("#height").val(resolution[1]);
+    });
+    $('#imgcreate').on('click', function() {
+        $(".content").load("/pages/imgeditor.html");
     });
 </script>

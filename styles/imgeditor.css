@@ -1,0 +1,16 @@
+#imgeditheader{
+    width: 100vw;
+    height: 4vh;
+    background-color: #252525;
+}
+#imgeditheader h1{
+    margin-left: 1vw;
+}
+#imgeditheader h1:hover{
+    color: #5081a0;
+}
+#canvasbg{
+    width: 100vw;
+    height: 96vh;
+    background-color: #4b4b4b;
+}
