@@ -7,11 +7,10 @@
     <link rel="stylesheet" href="/deps/filepond/filepond-plugin-image-preview.min.css">
     <title>Pigeonator</title>
     <link rel="icon" type="image/x-icon" href="img/pigeon.png">
-
-    <script src="/scripts/jquery-3.7.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jcanvas/23.0.0/esm/jcanvas.min.js"
-        integrity="sha512-XnX+GTm1Kj0qdXi3Aw+tdsbBpThGUQWA+CCC6nUhvmmJSXNlCEQQFIzyXV2N1etVUkPwM+3E7g09Un8gn8ipzQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="/deps/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jcanvas/23.0.0/umd/jcanvas.min.js" crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
@@ -61,7 +60,9 @@
 
             <div class="blank">
                 <div id="fullslider" class="fix">
-                    <div id="slider"></div>
+                    <div id="slider">
+                        <!-- Add content here :) -->
+                    </div>
                     <div id="lineicon">
                         <img src="img/line.png" id="lineicon1">
                         <img src="img/line.png" id="lineicon2">
@@ -81,7 +82,57 @@
     <script>
         $('#lineicon').on('click', function () {
             $("#fullslider").toggleClass("animated");
+
+
+            // Wikimedia Commons API, random pigeon image
+            // don't touch
+            if (typeof window.responseJson != 'object') {
+
+                // i don't like the MediaWiki api
+                var url = "https://commons.wikimedia.org/w/api.php";
+                url += "?action=query&generator=images";
+                url += "&prop=imageinfo";
+                url += "&gimlimit=1";
+                url += "&redirects=1&titles=Cat";
+                url += "&iiprop=timestamp|user|comment|canonicaltitle|url";
+                url += '&format=json&callback=processResponse';
+
+
+                /*
+                 * XSS thingamagong
+                 */
+                var script = document.createElement('script');
+                script.src = url;
+                document.body.appendChild(script);
+                document.body.removeChild(script);
+
+            }
+            else{
+                processResponse(window.responseJson);
+            }
+
         });
+
+
+        // function that gets called upon WikiMedia Commons API response
+        function processResponse(json) {
+            window.responseJson = json
+
+            // i REALLY don't like the MediaWiki api
+            var pages = json.query.pages;
+            var keys = Object.keys(pages);
+            var random = pages[keys[keys.length * Math.random() << 0]].imageinfo[0];
+
+            console.log(random)
+
+            console.log(random.canonicaltitle, random.comment, random.user, random.url, random.timestamp, random.descriptionurl)
+
+            // TODO, fit this all in the page :3
+
+        }
+
+
+        console.log("loaded index.html JS")
     </script>
 
 

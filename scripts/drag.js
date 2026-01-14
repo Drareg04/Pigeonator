@@ -46,3 +46,5 @@ function showDiv() {
 function hideDiv() {
     document.getElementById("dragdiv").style.display = "none";
 }
+
+console.log("loaded drag.js")

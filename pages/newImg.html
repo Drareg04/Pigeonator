@@ -33,8 +33,8 @@
         </div>
         <h1>Background</h1>
         <select name="background" id="bgcolor">
-            <option value="none">Transparent</option>
             <option value="white">White</option>
+            <option value="none">Transparent</option>
             <option value="black">Black</option>
             <option value="custom">Custom</option>
         </select>
@@ -54,14 +54,16 @@
         $("#width").val(resolution[0]);
         $("#height").val(resolution[1]);
     });
-    $('#imgcreate').on('click', function () {
+
+    $('#imgcreate').on('mouseup', function () {
         width = $("#width").val();
         height = $("#height").val();
+        console.log("clicked create")
         $(".content").load("/pages/imgeditor.html", function () {
-            $.getScript("scripts/imgeditor.js")
         });
-
+        $.getScript("scripts/imgeditor.js")
     });
+
     $(document).on("click", "#swap", function () {
         $(".preset").removeClass("selected");
         // do presety stuff
@@ -69,4 +71,7 @@
         $("#width").val($("#height").val());
         $("#height").val(tmp);
     });
+
+
+    console.log("loaded newimg.html JS")
 </script>

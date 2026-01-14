@@ -5,6 +5,9 @@
     background-color: #252525;
 }
 
+#myCanvas{
+    background-color: #494949;
+}
 #imgeditheader #left {
     display: flex;
     padding-top: 1vh;
