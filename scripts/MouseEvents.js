@@ -146,3 +146,11 @@ canvas.addEventListener("wheel", (e) => {
     }
 
 })
+
+$("#checkmark").on("click", function(event) {
+    if ($('#checkmark').attr('src') == '/img/imgeditor/openeyes.png'){
+        $('#checkmark').attr('src','/img/imgeditor/closedeyes.png');
+    }else{
+        $('#checkmark').attr('src','/img/imgeditor/openeyes.png');
+    }
+});

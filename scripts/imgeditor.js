@@ -21,8 +21,8 @@ $(document).ready(function () {
     $.getScript("/scripts/MouseEvents.js")
 });
 
-
-
-
-
+$("#layersIcon").on("click", function(event) {
+    console.log("1")
+    $("#layerpopup").fadeToggle();
+});
 console.log("loaded imgeditor.js")

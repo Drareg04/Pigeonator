@@ -32,7 +32,7 @@
 
 #canvasbg {
     width: 100vw;
-    height: 96vh;
+    height: 94vh;
     background-color: #4b4b4b;
     position: absolute;
     z-index: -1;
@@ -41,4 +41,54 @@
     width: 4vh;
     height: 4vh;
     margin-right: 1vw;
+}
+#layerpopup{
+    display: none;
+    position: absolute;
+    width: 18vw;
+    background-color: #2b2b2b;
+    z-index: 9;
+    right: 2vw;
+    top: 9vh;
+    border-radius: 15px;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+#layerpopup h2 {
+    color: #9ec2d8;
+    font-family: Drawin;
+    margin: 0 1vw 0 1vw;
+    font-size: 1.5vw;
+}
+#layers .layer{
+    display: flex;
+    height: 6vh;
+    margin-top: 1vh;
+    color: #9ec2d8;
+    font-family: Pencil;
+    font-size: 1.3vw;
+    border-top: 1vh solid transparent;
+    border-image: url(/img/Border.png) 30 round;
+    align-items: center;
+}
+#layers div p{
+    margin: 0;
+}
+#layers .layer #preview{
+    width: 5vw;
+}
+#layers .layer #layerName{
+    width: 10vw;
+}
+#layers .layer #visibility img{
+    width: 2vw;
+    margin-right: 1vw;
+}
+#speechTrianglo{
+    position: absolute;
+    background-color: #2b2b2b;
+    width: 4vh;
+    height: 4vh;
+    transform: translate(14.3vw, -7vh) rotate(45deg);
+    z-index: 8;
 }
