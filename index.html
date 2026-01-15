@@ -9,15 +9,15 @@
     <link rel="icon" type="image/x-icon" href="img/pigeon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <script src="/deps/jquery-3.7.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jcanvas/23.0.0/umd/jcanvas.min.js" crossorigin="anonymous"
-        referrerpolicy="no-referrer"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jcanvas/23.0.0/umd/jcanvas.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <script src="https://unpkg.com/konva@10/konva.min.js"></script>
 </head>
 
 <body>
     <div class="content">
         <div class="container">
             <div class="menu">
-                <div class="fix">
+                <div class="fix" style="display: none;">
                     <span><img src="img/Pigeonimg.png" onclick="changeContent('img')"></span>
                     <span><img src="img/Pigeonfilm.png" onclick="changeContent('vid')"></span>
                     <span><img src="img/Pigeongif.png" onclick="changeContent('gif')"></span>
@@ -35,7 +35,7 @@
 
                 <!-- upper -->
                 <div class="upper">
-                    <span><img src="img/Newproject.png" onclick="showDiv()">
+                    <span onclick="showDiv()"><img src="img/Newproject.png">
                         <p>New Project</p>
                     </span>
                     <span><img src="img/Pcupload.png">
@@ -92,8 +92,8 @@
                 var url = "https://commons.wikimedia.org/w/api.php";
                 url += "?action=query&generator=images";
                 url += "&prop=imageinfo";
-                url += "&gimlimit=1";
-                url += "&redirects=1&titles=Cat";
+                url += "&gimlimit=20";
+                url += "&redirects=1&titles=Pigeon";
                 url += "&iiprop=timestamp|user|comment|canonicaltitle|url";
                 url += '&format=json&callback=processResponse';
 
@@ -107,7 +107,7 @@
                 document.body.removeChild(script);
 
             }
-            else{
+            else if ($("#fullslider").hasClass("animated")) {
                 processResponse(window.responseJson);
             }
 
@@ -125,9 +125,14 @@
 
             console.log(random)
 
-            console.log(random.canonicaltitle, random.comment, random.user, random.url, random.timestamp, random.descriptionurl)
+            $("#slider").html('\
+                <a  href="' + random.descriptionurl + '"><img src="' + random.url + '"/></a>\
+                <a>' + random.canonicaltitle, +'</a>\
+                ');
 
-            // TODO, fit this all in the page :3
+            $("#slider").append('\
+                <p>' + random.user + ' ' + random.timestamp + '</p>\
+                <p>'+ random.comment + '</p>');
 
         }
 

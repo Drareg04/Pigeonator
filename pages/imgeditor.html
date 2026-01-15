@@ -5,27 +5,36 @@
         <img src="/img/imgeditor/settings.png" class="icon">
         <img src="/img/imgeditor/wand.png" class="icon">
         <img src="/img/imgeditor/cut.png" class="icon">
-        <img src="/img/imgeditor/cursor.png" class="icon">      
+        <img src="/img/imgeditor/cursor.png" class="icon">
     </div>
     <div id="right">
-        <img src="/img/imgeditor/brush.png" class="icon"> 
-        <img src="/img/imgeditor/blending.png" class="icon"> 
-        <img src="/img/imgeditor/ereaser.png" class="icon"> 
+        <img src="/img/imgeditor/brush.png" class="icon">
+        <img src="/img/imgeditor/blending.png" class="icon">
+        <img src="/img/imgeditor/ereaser.png" class="icon">
         <img id="layersIcon" src="/img/imgeditor/layers.png" class="icon">
         <img src="/img/imgeditor/UselessCircle.png" class="icon">
     </div>
     <div id="layerpopup">
-        <h2>Layers</h2><div id="speechTrianglo"></div>
-        <div id="layers">
-            <div id="0" class="layer">
-                <div id="preview"></div>
-                <div id="layerName"><p>Background</p></div>
-                <div id="visibility"><img id="checkmark" src="/img/imgeditor/openeyes.png"></div>
+        <div id="speechTrianglo"></div>
+        <div id="layerpopupHeader">
+            <div>
+                <h2>Layers</h2>
             </div>
+            <div id="plusbutton"><img src="/img/imgeditor/plusbutton.png"></div>
+        </div>
+        <div id="layers">
+            <!-- <div class="layer" data-layerId="2">
+                <div id="preview"></div>
+                <div id="layerName"><input type="text" value="Background"></div>
+                <div id="visibility"><img id="checkmark" src="/img/imgeditor/openeyes.png"></div>
+            </div> -->
         </div>
     </div>
 </div>
-<canvas id="myCanvas"></canvas>
+<!-- <canvas id="myCanvas"></canvas> -->
+<div id="table">
+
+</div>
 
 <script>
     console.log("loaded imgedtior.html js")

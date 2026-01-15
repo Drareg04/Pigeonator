@@ -5,7 +5,7 @@
     background-color: #252525;
 }
 
-#myCanvas{
+#table{
     background-color: #494949;
 }
 #imgeditheader #left {
@@ -46,22 +46,48 @@
     display: none;
     position: absolute;
     width: 18vw;
+    max-height: 88vh;
     background-color: #2b2b2b;
     z-index: 9;
-    right: 2vw;
+    right: 0.5vw;
     top: 9vh;
     border-radius: 15px;
     padding-top: 1vh;
     padding-bottom: 1vh;
+    overflow: hidden;
 }
-#layerpopup h2 {
+#layerpopupHeader{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+#layerpopupHeader div{
+    width: 50%;
+}
+#plusbutton{
+    display: flex;
+    justify-content: flex-end;
+}
+#layerpopupHeader img{
+    width: 1.5vw;
+    height: 1.5vw;
+    margin-right: 1vw;
+}
+#layerpopupHeader h2 {
     color: #9ec2d8;
     font-family: Drawin;
-    margin: 0 1vw 0 1vw;
+    margin-left: 1vw;
     font-size: 1.5vw;
 }
-#layers .layer{
+#layers{
     display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 1vw 0 1vw;
+}
+#layers .layer{
+    display: grid;
+    grid-template-columns: 4vw 8vw 4vw;
     height: 6vh;
     margin-top: 1vh;
     color: #9ec2d8;
@@ -71,24 +97,29 @@
     border-image: url(/img/Border.png) 30 round;
     align-items: center;
 }
-#layers div p{
-    margin: 0;
+#layers .layer .preview{
+    display: block;
+    justify-self: left;
 }
-#layers .layer #preview{
-    width: 5vw;
+#layers .layer .layerName input{
+    width: 8vw;
+    color: #9ec2d8;
+    font-family: Pencil;
+    font-size: 1.3vw;
+    border: none;
+    background: none;
 }
-#layers .layer #layerName{
-    width: 10vw;
-}
-#layers .layer #visibility img{
+#layers .layer .visibility img{
     width: 2vw;
-    margin-right: 1vw;
+    display: flex;
+    justify-self: right;
+    margin-right: 0.5vw;
 }
 #speechTrianglo{
     position: absolute;
     background-color: #2b2b2b;
     width: 4vh;
     height: 4vh;
-    transform: translate(14.3vw, -7vh) rotate(45deg);
+    transform: translate(12.5vw, -3vh) rotate(45deg);
     z-index: 8;
 }

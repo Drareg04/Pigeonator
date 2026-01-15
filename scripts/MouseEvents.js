@@ -1,9 +1,10 @@
-canvas = document.querySelector("#myCanvas");
-canvas.addEventListener("contextmenu", (e) => {
+globalThis.stage = stage;
+
+stage.addEventListener("contextmenu", (e) => {
     e.preventDefault();
 });
 
-canvas.addEventListener("mousedown", (e) => {
+stage.addEventListener("mousedown", (e) => {
     console.log("MOUSE DOWN")
 
     switch (e.button) {
@@ -41,12 +42,13 @@ function middledrag(e) {
         pos3 = e.clientX;
         pos4 = e.clientY;
         // set the element's new position:
-        $('canvas')
-            .setLayers({
-                x: '-=' + pos1, y: '-=' + pos2
-            })
-            .drawLayers();
-        console.log("MOVE")
+
+        stage.move({
+            x: -pos1,
+            y: -pos2
+        });
+
+        // console.log("MOVE")
     }
 
     function closeMiddleDragElement() {
@@ -74,15 +76,15 @@ function middlerotate(e) {
         pos3 = e.clientX;
         pos4 = e.clientY;
         // set the element's new position:
-        $('canvas')
-            .setLayers({
-                rotate: '-=' + (pos1 + pos2 / 2) / 10,
-            })
-            .drawLayers();
-        console.log("MOVE")
-        console.log(pos1 + pos2 / 2)
+        // $('canvas')
+        //     .setLayers({
+        //         rotate: '-=' + (pos1 + pos2 / 2) / 10,
+        //     })
+        //     .drawLayers();
 
-        console.log($('canvas').getLayer(0).rotate);
+        stage.rotate((pos1 + pos2 / 2) / 10);
+
+        console.log("ROTATE")
     }
 
     function closeMiddleRotateElement() {
@@ -92,65 +94,31 @@ function middlerotate(e) {
     }
 }
 
-function middlezoom(e) {
-    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-    // get the mouse cursor position at startup:
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    document.onmouseup = closeMiddleRotateElement;
-    // call a function whenever the cursor moves:
-    document.onmousemove = elementMiddleRotate;
+// Default example of Konva
+const scaleBy = 1.2;
+stage.on('wheel', (e) => {
+    // stop default scrolling
+    e.evt.preventDefault();
 
-    function elementMiddleRotate(e) {
-        e = e || window.event;
-        e.preventDefault();
-        // calculate the new cursor position:
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        // set the element's new position:
-        $('canvas')
-            .setLayers({
-                rotate: '-=' + (pos1 + pos2 / 2) / 10,
-            })
-            .drawLayers();
-        console.log("MOVE")
-        console.log(pos1 + pos2 / 2)
+    const oldScale = stage.scaleX();
+    const pointer = stage.getPointerPosition();
 
-        console.log($('canvas').getLayer(0).rotate);
-    }
+    const mousePointTo = {
+        x: (pointer.x - stage.x()) / oldScale,
+        y: (pointer.y - stage.y()) / oldScale,
+    };
 
-    function closeMiddleRotateElement() {
-        /* stop moving when mouse button is released:*/
-        document.onmouseup = null;
-        document.onmousemove = null;
-    }
-}
+    // how to scale? Zoom in? Or zoom out?
+    let direction = e.evt.deltaY > 0 ? -1 : 1;
+    // when we zoom on trackpad, e.evt.ctrlKey is true
 
+    const newScale = direction > 0 ? oldScale * scaleBy : oldScale / scaleBy;
 
+    stage.scale({ x: newScale, y: newScale });
 
-canvas.addEventListener("wheel", (e) => {
-    if (e.deltaY > 0) {
-        $('canvas')
-            .setLayers({
-                scale: '-=0.05'
-            })
-            .drawLayers();
-    } else if (e.deltaY < 0) {
-        $('canvas')
-            .setLayers({
-                scale: '+=0.05'
-            })
-            .drawLayers();
-    }
-
-})
-
-$("#checkmark").on("click", function(event) {
-    if ($('#checkmark').attr('src') == '/img/imgeditor/openeyes.png'){
-        $('#checkmark').attr('src','/img/imgeditor/closedeyes.png');
-    }else{
-        $('#checkmark').attr('src','/img/imgeditor/openeyes.png');
-    }
+    const newPos = {
+        x: pointer.x - mousePointTo.x * newScale,
+        y: pointer.y - mousePointTo.y * newScale,
+    };
+    stage.position(newPos);
 });

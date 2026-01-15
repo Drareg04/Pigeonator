@@ -55,13 +55,19 @@
         $("#height").val(resolution[1]);
     });
 
+    var loaded = false
     $('#imgcreate').on('mouseup', function () {
         width = $("#width").val();
         height = $("#height").val();
         console.log("clicked create")
         $(".content").load("/pages/imgeditor.html", function () {
+            if (!loaded) {
+                loaded = true;
+                $.getScript("scripts/imgeditor.js")
+            }
+
         });
-        $.getScript("scripts/imgeditor.js")
+
     });
 
     $(document).on("click", "#swap", function () {

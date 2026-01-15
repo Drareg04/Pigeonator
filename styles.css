@@ -162,6 +162,15 @@ img {
   border-image: url(img/Border.png) 30 round;
   border-image-outset: 0.5;
 }
+#slider img{
+  width: 70%;
+  margin-top: 20vh;
+  margin-left: 1vw;
+}
+#slider p{
+  color: #9ec2d8;
+  font-family: Pencil;
+}
 /* Slider icon */
 #lineicon{
   position: absolute;
