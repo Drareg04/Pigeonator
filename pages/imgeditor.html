@@ -3,16 +3,16 @@
     <div id="left">
         <h1>Gallery</h1>
         <img src="/img/imgeditor/settings.png" class="icon">
-        <img src="/img/imgeditor/wand.png" class="icon">
+        <!-- <img src="/img/imgeditor/wand.png" class="icon"> -->
         <img src="/img/imgeditor/cut.png" class="icon">
         <img src="/img/imgeditor/cursor.png" class="icon">
     </div>
     <div id="right">
-        <img src="/img/imgeditor/brush.png" class="icon">
-        <img src="/img/imgeditor/blending.png" class="icon">
-        <img src="/img/imgeditor/ereaser.png" class="icon">
+        <img id="brushIcon" src="/img/imgeditor/brush.png" class="icon">
+        <!-- <img src="/img/imgeditor/blending.png" class="icon"> -->
+        <img id="eraserIcon" src="/img/imgeditor/eraser.png" class="icon">
         <img id="layersIcon" src="/img/imgeditor/layers.png" class="icon">
-        <img src="/img/imgeditor/UselessCircle.png" class="icon">
+        <div id="colorPreview" class="icon"></div>
     </div>
     <div id="layerpopup">
         <div id="speechTrianglo"></div>
@@ -30,10 +30,26 @@
             </div> -->
         </div>
     </div>
+    <div id="colorpopup">
+        <div id="picker"></div>
+        <div class="form-item">
+            <label for="color">Hex:</label>
+            <input type="text" id="colorHex" name="colorHex" value="#9ec2d8" />
+        </div>
+    </div>
+    <div id="settings">
+        <div><img src="/img/imgeditor/add.png"><img src="/img/imgeditor/share.png"></div>
+    </div>
+    <div id="coverInvisiGirth">
+        <div id="invisiGirth">
+            <input type="range" name="girth" id="girth">
+            <img src="/img/imgeditor/dragInvisiGirth.png">
+            <input type="range" name="opacity
+            " id="opacity" min="0" max="1" value="1" step="0.05">
+        </div>
+    </div>
 </div>
-<!-- <canvas id="myCanvas"></canvas> -->
 <div id="table">
-
 </div>
 
 <script>

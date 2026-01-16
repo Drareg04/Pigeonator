@@ -42,7 +42,14 @@
     height: 4vh;
     margin-right: 1vw;
 }
-#layerpopup{
+#colorPreview{
+    width: 4vh;
+    height: 4vh;
+    margin-right: 1vw;
+    background-color: #9ec2d8;
+    border-radius: 50%;
+}
+#layerpopup, #colorpopup{
     display: none;
     position: absolute;
     width: 18vw;
@@ -84,22 +91,69 @@
     justify-content: center;
     flex-direction: column;
     margin: 0 1vw 0 1vw;
+    overflow: hidden;
 }
 #layers .layer{
     display: grid;
-    grid-template-columns: 4vw 8vw 4vw;
+    grid-template-columns: 4vw 8vw 4vw 3vw 3vw;
     height: 6vh;
     margin-top: 1vh;
     color: #9ec2d8;
     font-family: Pencil;
     font-size: 1.3vw;
+    align-items: center;
+    border-radius: 5px;
+}
+#layers .border{
     border-top: 1vh solid transparent;
     border-image: url(/img/Border.png) 30 round;
+}
+#layers .selectedLayer{
+    background-color: #9ec2d8;
+    color: #2b2b2b;
+    border: none;
+}
+#layers .selectedLayer.options .duplicate{
+    background-color: #61859b;
+}
+#layers .selectedLayer .layerName input{
+    color: #2b2b2b !important;
+}
+/* Animation */
+#layers .options div{
+    transform: translate(-6.05vw);
+    border-radius: 5px;
+}
+#layers .options .layerName{
+    transform: translate(-4vw);
+}
+#layers .options .duplicate{
+    transform: translate(-6.2vw);
+}
+#layers div{
+    transition: 0.5s;
+}
+/* Animation end*/
+#layers .delete{
+    background-color: red;
+    font-size: 0.9vw;
+    color: cyan;
+    text-align: center;
+    border-radius: 5px;
+}
+#layers .duplicate{
+    font-size: 0.7vw;
+    background-color: #202020;
+    height: 95%;
+    border-radius: 5px;
+    display: flex;
     align-items: center;
+    justify-content: center;
 }
 #layers .layer .preview{
     display: block;
     justify-self: left;
+    margin-left: 0.5vw;
 }
 #layers .layer .layerName input{
     width: 8vw;
@@ -122,4 +176,70 @@
     height: 4vh;
     transform: translate(12.5vw, -3vh) rotate(45deg);
     z-index: 8;
+}
+#layerOptionPopup{
+    z-index: 99;
+    position: absolute;
+}
+#coverInvisiGirth{
+    display: none;
+    position: absolute;
+    z-index: 4;
+    background-color: #252525;
+    border-radius: 5px;
+    top: 36vh;
+    left: 2px;  
+}
+#invisiGirth{
+    display: flex;
+    flex-direction: column;
+    height: 34vh;
+    width: 2vw;
+    justify-content: center;
+}
+#invisiGirth input[type="range"] {
+    writing-mode: vertical-lr;
+    height: 14vh;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    margin: 0.5vh 0 0.5vh 0;
+}
+#opacity{
+    transform: rotate(180deg);
+}
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+#invisiGirth input[type="range"]::-webkit-slider-runnable-track {
+    background: #666666;
+    width: 3vh;
+    border-radius: 5px;
+}
+#invisiGirth input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    margin-top: -12px; /* Centers thumb on the track */
+    background: #9ec2d8;
+    height: 2vh;
+    width: 3.8vh;
+    margin-top: 0.05vh;
+    margin-left: -0.4vh;
+    border-radius: 5px;
+}
+/******** Firefox ********/
+ #invisiGirth input[type="range"]::-moz-range-track {
+  background: #9ec2d8;
+}
+#invisiGirth img{
+    width: 3.8vh;
+    height: 4vh;
+    justify-self: center;
+    margin-left: 0.2vh;
+}
+#settings{
+    position: absolute;
+}
+#settings img{
+    width: 4vh;
+    height: 4vh;
 }

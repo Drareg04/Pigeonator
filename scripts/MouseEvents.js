@@ -1,14 +1,17 @@
 globalThis.stage = stage;
 
-stage.addEventListener("contextmenu", (e) => {
+document.addEventListener("contextmenu", (e) => {
     e.preventDefault();
 });
-
 stage.addEventListener("mousedown", (e) => {
     console.log("MOUSE DOWN")
 
     switch (e.button) {
         case 0:
+            if ($("#brushIcon").hasClass("freeze")) {
+                fancyPencil("draw");
+            }
+
             break;
         case 1:
             if (e.shiftKey) {
@@ -76,12 +79,6 @@ function middlerotate(e) {
         pos3 = e.clientX;
         pos4 = e.clientY;
         // set the element's new position:
-        // $('canvas')
-        //     .setLayers({
-        //         rotate: '-=' + (pos1 + pos2 / 2) / 10,
-        //     })
-        //     .drawLayers();
-
         stage.rotate((pos1 + pos2 / 2) / 10);
 
         console.log("ROTATE")
@@ -94,8 +91,55 @@ function middlerotate(e) {
     }
 }
 
+function fancyPencil(mode) {
+
+
+    document.onmouseup = closeDraw;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDraw;
+
+    groupId = $('[class*="selectedLayer"]').data("layer");
+
+    console.log(groupId)
+
+    group = stage.findOne(node => {
+        return node.id() === groupId
+    })
+
+    isPaint = true;
+    const pos = layer.getRelativePointerPosition();
+    var col = $('input[name="colorHex"]').val();
+    var girth = $('input[name="girth"]').val();
+    var opacity = $('input[name="opacity"]').val();
+
+    lastLine = new Konva.Line({
+        stroke: col,
+        strokeWidth: girth,
+        opacity: opacity,
+        globalCompositeOperation: mode === 'draw' ? 'source-over' : 'destination-out',
+        // round cap for smoother lines
+        lineCap: 'round',
+        lineJoin: 'round',
+        // bezier: true,
+        // add point twice, so we have some drawings even on a simple click
+        points: [pos.x, pos.y, pos.x, pos.y],
+    });
+    group.add(lastLine);
+
+    function elementDraw() {
+        const pos = layer.getRelativePointerPosition();
+        const newPoints = lastLine.points().concat([pos.x, pos.y]);
+        lastLine.points(newPoints);
+    }
+
+    function closeDraw() {
+        /* stop moving when mouse button is released:*/
+        document.onmouseup = null;
+        document.onmousemove = null;
+    }
+}
+
 // Default example of Konva
-const scaleBy = 1.2;
 stage.on('wheel', (e) => {
     // stop default scrolling
     e.evt.preventDefault();
@@ -112,6 +156,7 @@ stage.on('wheel', (e) => {
     let direction = e.evt.deltaY > 0 ? -1 : 1;
     // when we zoom on trackpad, e.evt.ctrlKey is true
 
+    const scaleBy = 1.2;
     const newScale = direction > 0 ? oldScale * scaleBy : oldScale / scaleBy;
 
     stage.scale({ x: newScale, y: newScale });
