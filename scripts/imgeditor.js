@@ -16,6 +16,7 @@ $(".icon").on("mouseenter", function () {
             $("#colorpopup").fadeOut();
             $("#layerpopup").fadeToggle();
             $("#layersIcon").toggleClass("freeze");
+            $("#settingsPopup").fadeOut();
             break;
 
         case 'brushIcon':
@@ -27,6 +28,7 @@ $(".icon").on("mouseenter", function () {
                 $("#coverInvisiGirth").fadeToggle();
             }
             $("#brushIcon").toggleClass("freeze");
+            $("#settingsPopup").fadeOut();
             break;
 
         case 'eraserIcon':
@@ -38,11 +40,20 @@ $(".icon").on("mouseenter", function () {
                 $("#coverInvisiGirth").fadeToggle();
             }
             $("#eraserIcon").toggleClass("freeze");
+            $("#settingsPopup").fadeOut();
             break;
 
         case 'colorPreview':
+            if($("#layersIcon").hasClass("freeze")){
+                $("#layersIcon").toggleClass("freeze");
+                $("#layersIcon").attr("src", '/img/imgeditor/layers.png');
+            }
+            $("#settingsPopup").fadeOut();
             $("#layerpopup").fadeOut();
             $("#colorpopup").fadeToggle();
+            break;
+        case 'settingsIcon':
+            $("#settingsPopup").fadeToggle();
             break;
         default:
             break;
@@ -51,8 +62,19 @@ $(".icon").on("mouseenter", function () {
 $("#plusbutton").click(function () {
     addGroup();
 });
-
-
+$(".settingIcons").click(function () {
+    var src = $(this).attr('src');
+    if (!$(this).hasClass("active")) {
+        $(this).attr("src", '/img/imgeditor/' + 'active' + src.substring(src.lastIndexOf('/') + 1));
+        $('.active').attr("src", '/img/imgeditor/' + $('.active').attr('src').substring($('.active').attr('src').lastIndexOf('/') + 7));
+        $('.active').removeClass('active');
+        $(this).addClass("active");
+        $('.spc').hide();
+        var spc = '#active' + src.substring(src.lastIndexOf('/') + 1).slice(0, -4)
+        console.log(spc)
+        $(spc).fadeIn();
+    }
+})
 
 $(document).ready(function () {
 
@@ -73,8 +95,6 @@ $(document).ready(function () {
     globalThis.layer = new Konva.Layer({
         width: width,
         height: height,
-        clipX: width,
-        clipY: height,
     });
     stage.add(layer);
 
@@ -137,9 +157,6 @@ function addGroup(id) {
     $(".layer").removeClass("selectedLayer")
     layerDiv.addClass("selectedLayer");
 
-    // ============ LAYERS PREVIEW ============
-    layerDiv.find('.preview').attr('src', group.toDataURL());
-
 
     // ============ EVENT LISTENERS ============
     layerDiv.find(".checkmark").on("click", function (event) {
@@ -178,11 +195,23 @@ function addGroup(id) {
 
 
 
-
-
     layer.add(group);
     group.moveToTop();
+
+    // ============ LAYERS PREVIEW ============
+    layerDiv.find('.preview').attr('src', group.toDataURL());
+
+
     return group;
+}
+
+function updatePreview() {
+    groupId = $('[class*="selectedLayer"]').data("layer");
+
+
+
+    $('[data-layer="' + groupId + '"]').find('.preview').attr('src', group.toDataURL({ x: 0, y: 0, width: width, height: height }));
+
 }
 
 console.log("loaded imgeditor.js")

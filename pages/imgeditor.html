@@ -2,7 +2,7 @@
 <div id="imgeditheader">
     <div id="left">
         <h1>Gallery</h1>
-        <img src="/img/imgeditor/settings.png" class="icon">
+        <img id="settingsIcon" src="/img/imgeditor/settings.png" class="icon">
         <!-- <img src="/img/imgeditor/wand.png" class="icon"> -->
         <img src="/img/imgeditor/cut.png" class="icon">
         <img src="/img/imgeditor/cursor.png" class="icon">
@@ -15,39 +15,58 @@
         <div id="colorPreview" class="icon"></div>
     </div>
     <div id="layerpopup">
-        <div id="speechTrianglo"></div>
-        <div id="layerpopupHeader">
-            <div>
-                <h2>Layers</h2>
+        <div id="speechTriangloLayers"></div>
+        <div id="layerpopupcontent">
+            <div id="layerpopupHeader">
+                <div>
+                    <h2>Layers</h2>
+                </div>
+                <div id="plusbutton"><img src="/img/imgeditor/plusbutton.png"></div>
             </div>
-            <div id="plusbutton"><img src="/img/imgeditor/plusbutton.png"></div>
-        </div>
-        <div id="layers">
-            <!-- <div class="layer" data-layerId="2">
-                <div id="preview"></div>
-                <div id="layerName"><input type="text" value="Background"></div>
-                <div id="visibility"><img id="checkmark" src="/img/imgeditor/openeyes.png"></div>
-            </div> -->
+            <div id="layers">
+                <!-- Layers HTML get inserted here -->
+            </div>
         </div>
     </div>
     <div id="colorpopup">
-        <div id="picker"></div>
-        <div class="form-item">
-            <label for="color">Hex:</label>
-            <input type="text" id="colorHex" name="colorHex" value="#9ec2d8" />
+        <div id="speechTriangloColor"></div>
+        <div id="colorpopupcontent">
+            <div id="picker"></div>
+            <div class="form-item">
+                <label for="color">Hex:</label>
+                <input type="text" id="colorHex" name="colorHex" value="#9ec2d8" />
+            </div>
         </div>
     </div>
-    <div id="settings">
-        <div><img src="/img/imgeditor/add.png"><img src="/img/imgeditor/share.png"></div>
+    <div id="settingsPopup">
+        <div id="speechTriangloSettings"></div>
+        <div id="settingsPopupContent">
+            <div><img class="settingIcons active" src="/img/imgeditor/activeadd.png"><img class="settingIcons" src="/img/imgeditor/export.png"></div>
+            <div class="spc"  id="activeadd">
+                <div class="settings"><p>Import File</p></div>
+                <div class="settings"><p>Import Image</p></div>
+                <div class="settings"><p>Add text</p></div>
+            </div>
+            <div class="spc" id="activeexport" style="display: none;">
+                <h2>Export Image</h2>
+                <div class="settings"><p>PNG</p></div>
+                <div class="settings"><p>JPEG</p></div>
+                <div class="settings"><p>TIFF</p></div>
+                <h2>Export Layer</h2>
+                <div class="settings"><p>PNG</p></div>
+                <div class="settings"><p>JPEG</p></div>
+                <div class="settings"><p>TIFF</p></div>
+            </div>
+        </div>
     </div>
     <div id="coverInvisiGirth">
         <div id="invisiGirth">
-            <input type="range" name="girth" id="girth">
+            <input type="range" name="girth" id="girth" min="0" max="150" value="25" step="0.5">
             <img src="/img/imgeditor/dragInvisiGirth.png">
-            <input type="range" name="opacity
-            " id="opacity" min="0" max="1" value="1" step="0.05">
+            <input type="range" name="opacity" id="opacity" min="0" max="1" value="1" step="0.05">
         </div>
     </div>
+    
 </div>
 <div id="table">
 </div>

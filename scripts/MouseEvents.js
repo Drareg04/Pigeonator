@@ -10,6 +10,8 @@ stage.addEventListener("mousedown", (e) => {
         case 0:
             if ($("#brushIcon").hasClass("freeze")) {
                 fancyPencil("draw");
+            } else if ($("#eraserIcon").hasClass("freeze")) {
+                fancyPencil("erase");
             }
 
             break;
@@ -108,6 +110,11 @@ function fancyPencil(mode) {
 
     isPaint = true;
     const pos = layer.getRelativePointerPosition();
+
+    if (!canDraw(pos)) {
+        return;
+    }
+
     var col = $('input[name="colorHex"]').val();
     var girth = $('input[name="girth"]').val();
     var opacity = $('input[name="opacity"]').val();
@@ -117,6 +124,7 @@ function fancyPencil(mode) {
         strokeWidth: girth,
         opacity: opacity,
         globalCompositeOperation: mode === 'draw' ? 'source-over' : 'destination-out',
+        // globalCompositeOperation: 'source-over',
         // round cap for smoother lines
         lineCap: 'round',
         lineJoin: 'round',
@@ -128,6 +136,9 @@ function fancyPencil(mode) {
 
     function elementDraw() {
         const pos = layer.getRelativePointerPosition();
+        if (!canDraw(pos)) {
+            return;
+        }
         const newPoints = lastLine.points().concat([pos.x, pos.y]);
         lastLine.points(newPoints);
     }
@@ -136,6 +147,21 @@ function fancyPencil(mode) {
         /* stop moving when mouse button is released:*/
         document.onmouseup = null;
         document.onmousemove = null;
+        lastLine = null;
+        updatePreview()
+    }
+
+    function canDraw(pos) {
+        return true;
+
+        // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        if (pos.x > layer.width() || pos.x < 0 || pos.y * 1.3 > layer.height() || pos.y * 1.3 < 0) {
+            console.log(pos.x, layer.width(), pos.y * 1.3, layer.height());
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 }
 
