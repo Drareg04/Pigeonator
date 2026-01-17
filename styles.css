@@ -161,11 +161,20 @@ img {
   border-left: 1vw solid transparent;
   border-image: url(img/Border.png) 30 round;
   border-image-outset: 0.5;
+  display: flex;
+  flex-direction: column;
 }
 #slider img{
-  width: 70%;
   margin-top: 20vh;
-  margin-left: 1vw;
+  width: 17vw;
+  border-radius: 15px;
+}
+#slider a{
+  color: #9ec2d8;
+  font-family: Pencil;
+  margin: 0 1vw 0 1vw;
+  width: 17vw;
+  text-align: center;
 }
 #slider p{
   color: #9ec2d8;

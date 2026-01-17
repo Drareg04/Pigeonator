@@ -48,7 +48,7 @@ function middledrag(e) {
         pos4 = e.clientY;
         // set the element's new position:
 
-        stage.move({
+        layer.move({
             x: -pos1,
             y: -pos2
         });
@@ -81,7 +81,7 @@ function middlerotate(e) {
         pos3 = e.clientX;
         pos4 = e.clientY;
         // set the element's new position:
-        stage.rotate((pos1 + pos2 / 2) / 10);
+        layer.rotate((pos1 + pos2 / 2) / 10);
 
         console.log("ROTATE")
     }
@@ -170,12 +170,12 @@ stage.on('wheel', (e) => {
     // stop default scrolling
     e.evt.preventDefault();
 
-    const oldScale = stage.scaleX();
+    const oldScale = layer.scaleX();
     const pointer = stage.getPointerPosition();
 
     const mousePointTo = {
-        x: (pointer.x - stage.x()) / oldScale,
-        y: (pointer.y - stage.y()) / oldScale,
+        x: (pointer.x - layer.x()) / oldScale,
+        y: (pointer.y - layer.y()) / oldScale,
     };
 
     // how to scale? Zoom in? Or zoom out?
@@ -185,11 +185,11 @@ stage.on('wheel', (e) => {
     const scaleBy = 1.2;
     const newScale = direction > 0 ? oldScale * scaleBy : oldScale / scaleBy;
 
-    stage.scale({ x: newScale, y: newScale });
+    layer.scale({ x: newScale, y: newScale });
 
     const newPos = {
         x: pointer.x - mousePointTo.x * newScale,
         y: pointer.y - mousePointTo.y * newScale,
     };
-    stage.position(newPos);
+    layer.position(newPos);
 });

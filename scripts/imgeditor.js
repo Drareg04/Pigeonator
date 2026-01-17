@@ -17,6 +17,11 @@ $(".icon").on("mouseenter", function () {
             $("#layerpopup").fadeToggle();
             $("#layersIcon").toggleClass("freeze");
             $("#settingsPopup").fadeOut();
+            if ($("#cursorIcon").hasClass("freeze")) {
+                $("#cursorIcon").toggleClass("freeze");
+                $("#cursorIcon").attr("src", '/img/imgeditor/cursor.png');
+                $("#cursorPopup").fadeOut();
+            }
             break;
 
         case 'brushIcon':
@@ -26,6 +31,11 @@ $(".icon").on("mouseenter", function () {
             }
             else {
                 $("#coverInvisiGirth").fadeToggle();
+            }
+            if ($("#cursorIcon").hasClass("freeze")) {
+                $("#cursorIcon").toggleClass("freeze");
+                $("#cursorIcon").attr("src", '/img/imgeditor/cursor.png');
+                $("#cursorPopup").fadeOut();
             }
             $("#brushIcon").toggleClass("freeze");
             $("#settingsPopup").fadeOut();
@@ -39,29 +49,53 @@ $(".icon").on("mouseenter", function () {
             else {
                 $("#coverInvisiGirth").fadeToggle();
             }
+            if ($("#cursorIcon").hasClass("freeze")) {
+                $("#cursorIcon").toggleClass("freeze");
+                $("#cursorIcon").attr("src", '/img/imgeditor/cursor.png');
+                $("#cursorPopup").fadeOut();
+            }
             $("#eraserIcon").toggleClass("freeze");
             $("#settingsPopup").fadeOut();
             break;
 
         case 'colorPreview':
-            if($("#layersIcon").hasClass("freeze")){
+            if ($("#layersIcon").hasClass("freeze")) {
                 $("#layersIcon").toggleClass("freeze");
                 $("#layersIcon").attr("src", '/img/imgeditor/layers.png');
+            } if ($("#cursorIcon").hasClass("freeze")) {
+                $("#cursorIcon").toggleClass("freeze");
+                $("#cursorIcon").attr("src", '/img/imgeditor/cursor.png');
+                $("#cursorPopup").fadeOut();
             }
             $("#settingsPopup").fadeOut();
             $("#layerpopup").fadeOut();
             $("#colorpopup").fadeToggle();
             break;
         case 'settingsIcon':
+            if ($("#cursorIcon").hasClass("freeze")) {
+                $("#cursorIcon").toggleClass("freeze");
+                $("#cursorIcon").attr("src", '/img/imgeditor/cursor.png');
+                $("#cursorPopup").fadeOut();
+            }
             $("#settingsPopup").fadeToggle();
+            break;
+        case 'cursorIcon':
+            $("#cursorIcon").toggleClass("freeze");
+            $("#settingsPopup").fadeOut();
+            $("#cursorPopup").fadeToggle();
             break;
         default:
             break;
     };
 })
+
+// add layer
 $("#plusbutton").click(function () {
     addGroup();
 });
+
+// groupId = $('[class*="selectedLayer"]').data("layer");
+
 $(".settingIcons").click(function () {
     var src = $(this).attr('src');
     if (!$(this).hasClass("active")) {
@@ -76,48 +110,107 @@ $(".settingIcons").click(function () {
     }
 })
 
-$(document).ready(function () {
+$("#activeexport div").click(function () {
 
-    // first we need to create a stage
-    globalThis.stage = new Konva.Stage({
-        container: 'table', // id of container <div>
-        width: window.innerWidth,
-        height: window.innerHeight / 94 * 100,
-        offset: {
-            x: window.innerWidth / 2,
-            y: window.innerHeight / 2,
-        },
-    });
-    stage.move({
-        x: window.innerWidth / 2,
-        y: window.innerHeight / 2.3,
-    });
-    globalThis.layer = new Konva.Layer({
-        width: width,
-        height: height,
-    });
-    stage.add(layer);
+    if ($(this).hasClass("export")) {
+        // export
+        switch (this.innerText) {
+            case 'Pigeon':
 
+                break;
+            case 'PDF':
+                break;
+            case 'PNG':
 
-    var group = addGroup("Background");
+                dataURL = layer.toDataURL({
+                    x: 0,
+                    y: 0,
+                    width: presetWidth,
+                    height: presetHeight,
+                });
 
-    // create our shape
-    const rect1 = new Konva.Rect({
-        x: window.innerWidth / 2 - width / 2,
-        y: (window.innerHeight / 94 * 100) / 2 - height / 2,
-        width: width,
-        height: height,
-        fill: '#FFF',
-        strokeWidth: 4
-    });
-    group.add(rect1);
+                downloadFile(dataURL, "image.png")
 
+                break;
+            case 'JPEG':
+                dataURL = layer.toDataURL({
+                    x: layer.x(),
+                    y: layer.y(),
+                    width: 1920,
+                    height: 1080,
+                    // pixelRatio: layer.scaleX(),
+                    mimeType: "image/jpeg",
+                });
 
-    $('#picker').farbtastic(colorChanged);
+                downloadFile(dataURL, "image.jpg")
+                break;
+            case 'Pigeon':
+                break;
+            default:
+                console.log(this.innerText)
+                break;
+        }
 
+    }
+    else {
+        // import
 
-    $.getScript("/scripts/MouseEvents.js")
+    }
+
 });
+
+$(".cursorPopupTopButtons").click(function () {
+    if (!$(this).hasClass("ActiveCursorButton")) {
+        switch ($(this).attr('id')) {
+            case 'Freecursor':
+                var src = $('.ActiveCursorButton').find('img').attr("src");
+                $('.ActiveCursorButton').find('img').attr("src", '/img/imgeditor/' + src.substring(src.lastIndexOf('/') + 6));
+                $(".ActiveCursorButton").removeClass("ActiveCursorButton");
+                $("#Freecursor").find('img').attr("src", '/img/imgeditor/blackfree.png');
+                $("#Freecursor").addClass("ActiveCursorButton")
+                break;
+            case 'Uniformcursor':
+                var src = $('.ActiveCursorButton').find('img').attr("src");
+                $('.ActiveCursorButton').find('img').attr("src", '/img/imgeditor/' + src.substring(src.lastIndexOf('/') + 6));
+                $(".ActiveCursorButton").removeClass("ActiveCursorButton");
+                $("#Uniformcursor").find('img').attr("src", '/img/imgeditor/blackuniform.png');
+                $("#Uniformcursor").addClass("ActiveCursorButton")
+                break;
+            case 'Distortcursor':
+                var src = $('.ActiveCursorButton').find('img').attr("src");
+                $('.ActiveCursorButton').find('img').attr("src", '/img/imgeditor/' + src.substring(src.lastIndexOf('/') + 6));
+                $(".ActiveCursorButton").removeClass("ActiveCursorButton");
+                $("#Distortcursor").find('img').attr("src", '/img/imgeditor/blackdistort.png');
+                $("#Distortcursor").addClass("ActiveCursorButton")
+                break;
+            case 'Deformcursor':
+                var src = $('.ActiveCursorButton').find('img').attr("src");
+                $('.ActiveCursorButton').find('img').attr("src", '/img/imgeditor/' + src.substring(src.lastIndexOf('/') + 6));
+                $(".ActiveCursorButton").removeClass("ActiveCursorButton");
+                $("#Deformcursor").find('img').attr("src", '/img/imgeditor/blackdeform.png');
+                $("#Deformcursor").addClass("ActiveCursorButton")
+                break;
+            default:
+                break;
+        }
+    }
+})
+$(".cursorPopupBottomButtons").click(function () {
+    switch ($(this).attr('id')) {
+        case 'Fliphorizontalcursor':
+            break;
+        case 'Flipverticalcursor':
+            break;
+        case 'Flip45cursor':
+            break;
+        default:
+            break;
+    }
+})
+
+
+
+// ============ FUNCTIONS ============
 
 function colorChanged() {
     $('#colorPreview').css("background-color", this.color);
@@ -135,8 +228,8 @@ function addGroup(id) {
     // Create "layer" (group)
     var group = new Konva.Group({
         id: id,
-        width: width,
-        height: height,
+        width: presetWidth,
+        height: presetHeight,
     });
 
     console.log("Added Group with ID: " + group.id())
@@ -175,6 +268,17 @@ function addGroup(id) {
         $(".layer").data("layer", val);
     });
 
+    // delete layer
+    layerDiv.find(".delete").click(function () {
+        group.destroy();
+        $(this).parent().remove();
+    });
+
+    // clone layer
+    layerDiv.find(".duplicate").click(function () {
+        var clone = group.clone();
+    });
+
     layerDiv.mouseup(function (e) {
         // console.log(e.button)
         switch (e.button) {
@@ -208,10 +312,64 @@ function addGroup(id) {
 function updatePreview() {
     groupId = $('[class*="selectedLayer"]').data("layer");
 
-
-
-    $('[data-layer="' + groupId + '"]').find('.preview').attr('src', group.toDataURL({ x: 0, y: 0, width: width, height: height }));
-
+    $('[data-layer="' + groupId + '"]').find('.preview').attr('src', group.toDataURL({ x: 0, y: 0, width: presetWidth, height: presetHeight }));
 }
+
+function downloadFile(file, name) {
+    // create link to download
+    const link = document.createElement('a');
+    link.download = name;
+    link.href = file;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+// ============ ON READY ============
+$(document).ready(function () {
+
+    // first we need to create a stage
+    globalThis.stage = new Konva.Stage({
+        container: 'table', // id of container <div>
+        width: window.innerWidth,
+        height: window.innerHeight / 94 * 100,
+        offset: {
+            x: window.innerWidth / 2,
+            y: window.innerHeight / 2,
+        },
+    });
+    stage.move({
+        x: window.innerWidth / 2,
+        y: window.innerHeight / 2.3,
+    });
+    globalThis.layer = new Konva.Layer({
+        width: presetWidth,
+        height: presetHeight,
+    });
+    stage.add(layer);
+
+    layer.width(presetWidth);
+    layer.height(presetHeight);
+
+    var group = addGroup("Background");
+
+    // create our shape
+    const rect1 = new Konva.Rect({
+        x: window.innerWidth / 2 - presetWidth / 2,
+        y: (window.innerHeight / 94 * 100) / 2 - presetHeight / 2,
+        width: presetWidth,
+        height: presetHeight,
+        fill: '#FFF',
+        strokeWidth: 4
+    });
+    console.log(layer.width(), layer.height())
+    group.add(rect1);
+
+
+    $('#picker').farbtastic(colorChanged);
+
+
+    $.getScript("/scripts/MouseEvents.js")
+});
 
 console.log("loaded imgeditor.js")

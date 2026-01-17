@@ -4,8 +4,8 @@
         <h1>Gallery</h1>
         <img id="settingsIcon" src="/img/imgeditor/settings.png" class="icon">
         <!-- <img src="/img/imgeditor/wand.png" class="icon"> -->
-        <img src="/img/imgeditor/cut.png" class="icon">
-        <img src="/img/imgeditor/cursor.png" class="icon">
+        <!-- <img src="/img/imgeditor/cut.png" class="icon"> -->
+        <img id="cursorIcon" src="/img/imgeditor/cursor.png" class="icon">
     </div>
     <div id="right">
         <img id="brushIcon" src="/img/imgeditor/brush.png" class="icon">
@@ -23,8 +23,10 @@
                 </div>
                 <div id="plusbutton"><img src="/img/imgeditor/plusbutton.png"></div>
             </div>
-            <div id="layers">
-                <!-- Layers HTML get inserted here -->
+            <div id="layerCover">
+                <div id="layers">
+                    <!-- Layers HTML get inserted here -->
+                </div>
             </div>
         </div>
     </div>
@@ -49,13 +51,17 @@
             </div>
             <div class="spc" id="activeexport" style="display: none;">
                 <h2>Export Image</h2>
-                <div class="settings"><p>PNG</p></div>
-                <div class="settings"><p>JPEG</p></div>
-                <div class="settings"><p>TIFF</p></div>
+                <div class="settings export"><p>Pigeon</p></div>
+                <div class="settings export"><p>PDF</p></div>
+                <div class="settings export"><p>PNG</p></div>
+                <div class="settings export"><p>JPEG</p></div>
+                <div class="settings export"><p>TIFF</p></div>
                 <h2>Export Layer</h2>
-                <div class="settings"><p>PNG</p></div>
-                <div class="settings"><p>JPEG</p></div>
-                <div class="settings"><p>TIFF</p></div>
+                <div class="settings import"><p>Pigeon</p></div>
+                <div class="settings import"><p>PDF</p></div>
+                <div class="settings import"><p>PNG</p></div>
+                <div class="settings import"><p>JPEG</p></div>
+                <div class="settings import"><p>TIFF</p></div>
             </div>
         </div>
     </div>
@@ -66,7 +72,36 @@
             <input type="range" name="opacity" id="opacity" min="0" max="1" value="1" step="0.05">
         </div>
     </div>
-    
+    <div id="cursorPopup">
+        <div id="cursorPopupContent">
+            <div id="cursorPopupTop">
+                <div id="Freecursor" class="cursorPopupTopButtons ActiveCursorButton"><img src="/img/imgeditor/blackfree.png"><p>Free</p></div>
+                <div id="Uniformcursor" class="cursorPopupTopButtons"><img src="/img/imgeditor/uniform.png"><p>Uniform</p></div>
+                <div id="Distortcursor" class="cursorPopupTopButtons"><img src="/img/imgeditor/distort.png"><p>Distort</p></div>
+                <div id="Deformcursor" class="cursorPopupTopButtons"><img src="/img/imgeditor/deform.png"><p>Deform</p></div>
+            </div>
+            <div id="cursorPopupBottom">
+                <div id="Fliphorizontalcursor" class="cursorPopupBottomButtons"><img src="/img/imgeditor/fliphorizontal.png"><p>Fliphorizontal</p></div>
+                <div id="Flipverticalcursor" class="cursorPopupBottomButtons"><img src="/img/imgeditor/flipvertical.png"><p>Flipvertical</p></div>
+                <div id="Flip45cursor" class="cursorPopupBottomButtons"><img src="/img/imgeditor/45flip.png"><p>Flip 45º</p></div>
+            </div>
+        </div>
+    </div>
+    <div id="clippingPopup">
+        <div id="clippingPopupContent">
+            <div id="clippingPopupTop">
+                <div id="Freeclipping" class="clippingPopupTopButtons ActiveclippingButton"><img src="/img/imgeditor/blackfree.png"><p>Free</p></div>
+                <div id="Uniformclipping" class="clippingPopupTopButtons"><img src="/img/imgeditor/uniform.png"><p>Uniform</p></div>
+                <div id="Distortclipping" class="clippingPopupTopButtons"><img src="/img/imgeditor/distort.png"><p>Distort</p></div>
+                <div id="Deformclipping" class="clippingPopupTopButtons"><img src="/img/imgeditor/deform.png"><p>Deform</p></div>
+            </div>
+            <div id="clippingPopupBottom">
+                <div id="Fliphorizontalclipping" class="clippingPopupBottomButtons"><img src="/img/imgeditor/fliphorizontal.png"><p>Fliphorizontal</p></div>
+                <div id="Flipverticalclipping" class="clippingPopupBottomButtons"><img src="/img/imgeditor/flipvertical.png"><p>Flipvertical</p></div>
+                <div id="Flip45clipping" class="clippingPopupBottomButtons"><img src="/img/imgeditor/45flip.png"><p>Flip 45º</p></div>
+            </div>
+        </div>
+    </div>
 </div>
 <div id="table">
 </div>

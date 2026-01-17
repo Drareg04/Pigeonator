@@ -68,6 +68,11 @@
 #layerpopupcontent, #colorpopupcontent, #settingsPopupContent{
     overflow: hidden;
 }
+#layerCover{
+    overflow-y: auto;
+    max-height: 75vh;
+    scrollbar-width: none
+}
 #settingsPopupContent{
     display: flex;
     flex-direction: column;
@@ -101,7 +106,7 @@
     justify-content: center;
     flex-direction: column;
     margin: 0 1vw 0 1vw;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 #layers .layer{
     display: grid;
@@ -292,4 +297,140 @@
 }
 .spc{
     float: left;
+}
+#cursorPopup{
+    display: none;
+    position: absolute;
+    width: 70vw;
+    max-height: 88vh;
+    background-color: #2b2b2b;
+    z-index: 9;
+    bottom: 1vh;
+    left: 15vw;
+    border-radius: 15px;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+#cursorPopupContent{
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #9ec2d8;
+    font-family: Pencil;
+}
+
+#cursorPopupTop{
+    margin-left: 23vw;
+    margin-right: 23vw;
+    display: flex;
+    justify-content: center;
+    border-radius: 15px;
+    background-color: #494949;
+    width: 24vw;
+}
+#cursorPopupTop img{
+    width: 2vh;
+    height: 2vh;
+    margin-right: 1vh;
+}
+#cursorPopupTop div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6vw;
+    border-radius: 15px;
+}
+#cursorPopupBottom{
+    padding-top: 2vh;
+    display: flex;
+    justify-content: center;
+}
+#cursorPopupBottom div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 6vw;
+    padding-top: 2vh;
+    border-radius: 15px;
+}
+#cursorPopupBottom img{
+    width: 2vw;
+    height: 2vw;
+}
+.ActiveCursorButton{
+    background-color: #9ec2d8 !important;
+    color: #494949 !important;
+}
+.cursorPopupBottomButtons:hover{
+    background-color: #363636;
+}
+#clippingPopup{
+    display: none;
+    position: absolute;
+    width: 70vw;
+    max-height: 88vh;
+    background-color: #2b2b2b;
+    z-index: 9;
+    bottom: 1vh;
+    left: 15vw;
+    border-radius: 15px;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+#clippingPopupContent{
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #9ec2d8;
+    font-family: Pencil;
+}
+
+#clippingPopupTop{
+    margin-left: 23vw;
+    margin-right: 23vw;
+    display: flex;
+    justify-content: center;
+    border-radius: 15px;
+    background-color: #494949;
+    width: 24vw;
+}
+#clippingPopupTop img{
+    width: 2vh;
+    height: 2vh;
+    margin-right: 1vh;
+}
+#clippingPopupTop div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6vw;
+    border-radius: 15px;
+}
+#clippingPopupBottom{
+    padding-top: 2vh;
+    display: flex;
+    justify-content: center;
+}
+#clippingPopupBottom div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 6vw;
+    padding-top: 2vh;
+    border-radius: 15px;
+}
+#clippingPopupBottom img{
+    width: 2vw;
+    height: 2vw;
+}
+.ActiveclippingButton{
+    background-color: #9ec2d8 !important;
+    color: #494949 !important;
+}
+.clippingPopupBottomButtons:hover{
+    background-color: #363636;
 }

@@ -121,21 +121,21 @@
             window.responseJson = json
 
             // i REALLY don't like the MediaWiki api
-            var pages = json.query.pages;
-            var keys = Object.keys(pages);
-            var random = pages[keys[keys.length * Math.random() << 0]].imageinfo[0];
+            // this is stupid but idc remove 2 bad responses (BluePencil.SVG & BNE logo)
+            var random = ""
+            while(random == "" || random.canonicaltitle.match(/(?<=:)[^.]*(?=\.)/) == "Blue pencil" || random.canonicaltitle.match(/(?<=:)[^.]*(?=\.)/) == "BNE logo"){
+                var pages = json.query.pages;
+                var keys = Object.keys(pages);
+                random = pages[keys[keys.length * Math.random() << 0]].imageinfo[0];
+                console.log(random.canonicaltitle.match(/(?<=:)[^.]*(?=\.)/))
+            }
 
             console.log(random)
 
             $("#slider").html('\
                 <a  href="' + random.descriptionurl + '"><img src="' + random.url + '"/></a>\
-                <a>' + random.canonicaltitle, +'</a>\
+                <a>' + random.canonicaltitle.match(/(?<=:)[^.]*(?=\.)/), +'</a>\
                 ');
-
-            $("#slider").append('\
-                <p>' + random.user + ' ' + random.timestamp + '</p>\
-                <p>'+ random.comment + '</p>');
-
         }
 
 
