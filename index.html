@@ -63,8 +63,12 @@
             <div class="blank">
                 <div id="fullslider" class="fix">
                     <div id="slider">
-                        <!-- Add content here :) -->
+                        <div id="ApiContent">
+                            <!-- Add content here :) -->
+                        </div>
+                         <a href="suggestions/index.php"><img id="pigeonmail" src="img/yougotmail.webp"></a>
                     </div>
+                    
                     <div id="lineicon">
                         <img src="img/line.png" id="lineicon1">
                         <img src="img/line.png" id="lineicon2">
@@ -132,7 +136,7 @@
 
             console.log(random)
 
-            $("#slider").html('\
+            $("#ApiContent").html('\
                 <a  href="' + random.descriptionurl + '"><img src="' + random.url + '"/></a>\
                 <a>' + random.canonicaltitle.match(/(?<=:)[^.]*(?=\.)/), +'</a>\
                 ');

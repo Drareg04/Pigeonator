@@ -151,6 +151,12 @@ img {
 .fix{
   position: fixed;
 }
+#pigeonmail{
+  position: absolute;
+  bottom: -3vh;
+  right: 9vh;
+  width: 10vw;
+}
 #slider{
   position: absolute;
   background-color: #141414;
@@ -164,17 +170,21 @@ img {
   display: flex;
   flex-direction: column;
 }
-#slider img{
-  margin-top: 20vh;
-  width: 17vw;
-  border-radius: 15px;
+#slider #ApiContent{
+  display: flex;
+  flex-direction: column;
 }
-#slider a{
+#slider #ApiContent a{
   color: #9ec2d8;
   font-family: Pencil;
   margin: 0 1vw 0 1vw;
   width: 17vw;
   text-align: center;
+}
+#slider #ApiContent img{
+  margin-top: 20vh;
+  width: 17vw;
+  border-radius: 15px;
 }
 #slider p{
   color: #9ec2d8;

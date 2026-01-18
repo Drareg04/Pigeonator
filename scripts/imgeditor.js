@@ -122,11 +122,13 @@ $("#activeexport div").click(function () {
                 break;
             case 'PNG':
 
+                let rect = layer.getClientRect();
+                console.log(rect);
                 dataURL = layer.toDataURL({
-                    x: 0,
-                    y: 0,
-                    width: presetWidth,
-                    height: presetHeight,
+                    x: rect.x,
+                    y: rect.y,
+                    width: rect.width,
+                    height: rect.width,
                 });
 
                 downloadFile(dataURL, "image.png")
@@ -154,7 +156,19 @@ $("#activeexport div").click(function () {
     }
     else {
         // import
-
+        switch (this.innerText) {
+            case 'Import Image':
+                console.log("clicked")
+                // get value
+                var image = shape.image();
+            
+                // set value
+                shape.image(img);
+                break;
+            default:
+                console.log(this.innerText)
+                break;
+        }
     }
 
 });
@@ -195,13 +209,26 @@ $(".cursorPopupTopButtons").click(function () {
         }
     }
 })
-$(".cursorPopupBottomButtons").click(function () {
+
+$(".cursorPopupBottomButtons").click(function (event) {
+    groupId = $('[class*="selectedLayer"]').data("layer");
+    console.log(groupId)
+    group = stage.findOne(node => {
+        return node.id() === groupId
+    })
     switch ($(this).attr('id')) {
         case 'Fliphorizontalcursor':
+            group.setAttr('scaleX', -group.scaleX());
             break;
         case 'Flipverticalcursor':
+            group.setAttr('scaleY', -group.scaleY());
             break;
         case 'Flip45cursor':
+            if (event.ctrlKey) {
+                group.rotate(-45);
+            } else {
+                group.rotate(45);
+            }
             break;
         default:
             break;
@@ -230,8 +257,15 @@ function addGroup(id) {
         id: id,
         width: presetWidth,
         height: presetHeight,
+        offset: {
+            x: window.innerWidth / 2,
+            y: window.innerHeight / 2,
+        },
     });
-
+    group.move({
+        x: window.innerWidth / 2,
+        y: window.innerHeight / 2,
+    });
     console.log("Added Group with ID: " + group.id())
 
     // add first layer on the layer dropdown
