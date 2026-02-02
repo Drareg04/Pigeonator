@@ -32,9 +32,11 @@ require_once("db.php");
             border: 1px solid black;
         }
     </style>
+    <link href="/suggestions/bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/suggestions/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
-<body>
+<body data-bs-theme="dark">
 
     <h1>Your suggestions</h1>
     <?php
@@ -48,31 +50,35 @@ require_once("db.php");
     $results = $stmt->get_result();
 
 
-    if ($results->num_rows > 0) {
     ?>
-        <table>
-            <tr>
+    <table class="table table-bordered table-hover">
+        <thead class="table-light">
+            <tr class="sticky-top">
                 <th>Title</th>
                 <th>Link</th>
             </tr>
+        </thead>
+        <tbody>
             <?php
-            // output data of each row
-            while ($row = $results->fetch_assoc()) {
+            if ($results->num_rows > 0) {
+                // output data of each row
+                while ($row = $results->fetch_assoc()) {
             ?>
-                <tr>
-                    <td><?= $row["title"] ?></td>
-                    <td><a href="/suggestions/suggestion.php?id=<?= $row["id"] ?>">Click!</a></td>
-                </tr>
+                    <tr>
+                        <td><?= $row["title"] ?></td>
+                        <td><a href="/suggestions/suggestion.php?id=<?= $row["id"] ?>">Click!</a></td>
+                    </tr>
             <?php
+                }
+            } else {
+                echo ("No suggestions?");
             }
-
             ?>
+        </tbody>
 
-        </table>
+    </table>
     <?php
-    } else {
-        echo ("No suggestions?");
-    }
+
     ?>
 
 </body>

@@ -262,10 +262,7 @@ function addGroup(id) {
             y: window.innerHeight / 2,
         },
     });
-    group.move({
-        x: window.innerWidth / 2,
-        y: window.innerHeight / 2,
-    });
+
     console.log("Added Group with ID: " + group.id())
 
     // add first layer on the layer dropdown
@@ -386,7 +383,10 @@ $(document).ready(function () {
     layer.height(presetHeight);
 
     var group = addGroup("Background");
-
+    layer.move({
+        x: window.innerWidth / 2,
+        y: window.innerHeight / 2,
+    });
     // create our shape
     const rect1 = new Konva.Rect({
         x: window.innerWidth / 2 - presetWidth / 2,

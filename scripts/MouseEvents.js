@@ -109,7 +109,7 @@ function fancyPencil(mode) {
     })
 
     isPaint = true;
-    const pos = layer.getRelativePointerPosition();
+    const pos = group.getRelativePointerPosition();
 
     if (!canDraw(pos)) {
         return;
@@ -135,7 +135,7 @@ function fancyPencil(mode) {
     group.add(lastLine);
 
     function elementDraw() {
-        const pos = layer.getRelativePointerPosition();
+        const pos = group.getRelativePointerPosition();
         if (!canDraw(pos)) {
             return;
         }

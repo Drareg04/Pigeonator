@@ -70,15 +70,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Suggestion View</title>
+        <link href="/suggestions/bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="/suggestions/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
     </head>
 
-    <body>
+    <body data-bs-theme="dark">
         <h1>Suggestion <?= $row["id"] ?></h1>
         <h3>Title: <?= $row["title"] ?></h3>
         <h5>By <?= $row["name"] ?> <?= $row["email"] ?></h5>
         <hr>
         <p><?= $row["description"] ?></p>
-        <img src="<?= $row["attachment"] ?>"/>
+        <img src="<?= $row["attachment"] ?>" />
         <hr>
         <h5>Comments:</h5>
         <?php

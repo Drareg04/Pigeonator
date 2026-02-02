@@ -32,52 +32,68 @@ require_once("db.php");
             border: 1px solid black;
         }
     </style>
+    <link href="/suggestions/bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/suggestions/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
-<body>
+<body data-bs-theme="dark">
 
-    <h1>List of suggestions</h1>
-    <?php
 
-    $sql = "SELECT s.id, s.title, u.name, u.email, u.password 
+    <!-- Header -->
+    <div class="p-5 text-center">
+        <h1>List of suggestions</h1>
+    </div>
+
+    <!-- Page Content -->
+    <div class="container mt-4">
+        <!-- <div class="p-5 mb-4 bg-light rounded-3">
+            <h2>Welcome!</h2>
+            <p class="lead">This is a sample Bootstrap page with a sticky top navbar.</p>
+        </div> -->
+
+        <?php
+
+        $sql = "SELECT s.id, s.title, u.name, u.email, u.password 
             FROM suggestions s
             INNER JOIN users u ON s.user_id = u.id 
     ";
-    $results = $conn->query($sql);
+        $results = $conn->query($sql);
+        ?>
 
-
-    if ($results->num_rows > 0) {
-    ?>
-        <table>
-            <tr>
-                <th>Title</th>
-                <th>User</th>
-                <th>Email</th>
-                <th>Account?</th>
-                <th>Link</th>
-            </tr>
-            <?php
-            // output data of each row
-            while ($row = $results->fetch_assoc()) {
-            ?>
-                <tr>
-                    <td><?= $row["title"] ?></td>
-                    <td><?= $row["name"] ?></td>
-                    <td><?= $row["email"] ?></td>
-                    <td><?= $row["password"]=="" ? "no" : "yes" ?></td>
-                    <td><a href="/suggestions/suggestion.php?id=<?= $row["id"] ?>">Click!</a></td>
+        <table class="table table-bordered table-hover">
+            <thead class="table-light">
+                <tr class="sticky-top">
+                    <th>Title</th>
+                    <th>User</th>
+                    <th>Email</th>
+                    <th>Account?</th>
+                    <th>Link</th>
                 </tr>
-            <?php
-            }
-
-            ?>
+            </thead>
+            <tbody>
+                <?php
+                if ($results->num_rows > 0) {
+                    // output data of each row
+                    while ($row = $results->fetch_assoc()) {
+                ?>
+                        <tr>
+                            <td><?= $row["title"] ?></td>
+                            <td><?= $row["name"] ?></td>
+                            <td><?= $row["email"] ?></td>
+                            <td><?= $row["password"] == "" ? "no" : "yes" ?></td>
+                            <td><a href="/suggestions/suggestion.php?id=<?= $row["id"] ?>">Click!</a></td>
+                        </tr>
+                <?php
+                    }
+                } else {
+                    echo ("No suggestions");
+                }
+                ?>
+            </tbody>
 
         </table>
-    <?php
-    } else {
-        echo ("No suggestions?");
-    }
-    ?>
+
+    </div>
 
 </body>
 
