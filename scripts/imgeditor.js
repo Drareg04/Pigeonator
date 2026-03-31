@@ -110,13 +110,16 @@ $(".settingIcons").click(function () {
     }
 })
 
+// export
 $("#activeexport div").click(function () {
 
     if ($(this).hasClass("export")) {
-        // export
+
         switch (this.innerText) {
             case 'Pigeon':
+                json = layer.toJSON()
 
+                downloadFile(JSONtoDataURL(json), "image.pgn")
                 break;
             case 'PDF':
                 break;
@@ -156,12 +159,13 @@ $("#activeexport div").click(function () {
     }
     else {
         // import
+        console.log(this.innerText);
         switch (this.innerText) {
             case 'Import Image':
                 console.log("clicked")
                 // get value
                 var image = shape.image();
-            
+
                 // set value
                 shape.image(img);
                 break;
@@ -172,6 +176,48 @@ $("#activeexport div").click(function () {
     }
 
 });
+
+// import
+$("#activeadd div").click(function () {
+    console.log
+
+    switch (this.innerText) {
+
+        case 'Import Pigeon':
+
+            // layer = Konva.Node.create(json, 'container');
+            break;
+
+        case 'Import Image':
+            $("body").append('<input id="file-input" type="file" accept="image/*" style="display: none;" />');
+            $('#file-input').trigger('click');
+
+            $('#file-input').change(function (e) {
+                // this fucking line should be in a museum i swear
+                addGroup($("#file-input")[0].files[0]["name"].split(".")[0])
+
+                // this is dumb, i don't care
+                groupId = $('[class*="selectedLayer"]').data("layer");
+                group = stage.findOne(node => {
+                    return node.id() === groupId
+                })
+
+                Konva.Image.fromURL(URL.createObjectURL($("#file-input")[0].files[0]), function (image) {
+                    group.add(image);
+                });
+
+                $('#file-input').remove();
+            });
+
+            break;
+
+        default:
+            console.log(this.innerText)
+            break;
+    }
+});
+
+
 
 $(".cursorPopupTopButtons").click(function () {
     if (!$(this).hasClass("ActiveCursorButton")) {
@@ -355,6 +401,24 @@ function downloadFile(file, name) {
     link.click();
     document.body.removeChild(link);
 }
+
+
+function JSONtoDataURL(JSONString) {
+    let dataURL = JSONString;
+    dataURL = dataURL.replace(/(\s*\n)+\s*/g, ' ');
+    dataURL = dataURL.replace(/\"/g, '\'');
+    dataURL = dataURL.trim();
+    const characterArray = dataURL.split('');
+    for (let i = 0; i < characterArray.length; i++) {
+        if (characterArray[i].match(/[A-Za-z0-9\.\,\;\:\/\*\-\=\_\~\'\!\$\@]/) === null) {
+            characterArray[i] = encodeURIComponent(characterArray[i]);
+        }
+    }
+    dataURL = characterArray.join('');
+    dataURL = 'data:text/plain;charset=utf-8,' + dataURL;
+    return dataURL;
+}
+
 
 // ============ ON READY ============
 $(document).ready(function () {
